@@ -1,0 +1,148 @@
+/*ROOM DETAILS PAGE*/
+.room-details-booking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 10px 90px 10px;
+    padding: 20px;
+}
+
+.room-details-image {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.room-details-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-now-button {
+    background-color: var(--primary);
+    color: var(--text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-now-button:hover {
+    background-color: var(--primary-dark);
+}
+
+
+.room-details-image {
+    width: 400px;
+    height: auto;
+}
+
+.room-details-info {
+    margin-top: 20px;
+}
+
+.booking-info {
+    margin-top: 20px;
+}
+
+.booking-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.booking-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
+.booking-number {
+    font-weight: bold;
+    color: var(--text);
+}
+
+.booking-text {
+    font-style: italic;
+    color: var(--text-light);
+}
+
+.detail-search-field {
+    /* flex: 0 0 calc(20.33% - 20px); */
+    margin: 5px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.confirm-booking {
+    background-color: var(--primary);
+    color: var(--text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.guest-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.guest-div {
+    margin-bottom: 10px;
+}
+
+.guest-div label {
+    margin-right: 10px;
+}
+
+.guest-div input[type="number"],
+.guest-div input[type="tel"] {
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.confirm-booking {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-booking:hover {
+    background-color: var(--primary-dark);
+}
+
+.booking-success-message {
+    text-align: center;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.error-message {
+    text-align: center;
+    color: (--accent-strong);
+    font-weight: 800;
+    font-size: 20px;
+
+}
+
+.success-message {
+    text-align: center;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 20px;
+
+}
+
+/*ROOM DETAILS PAGE END HERE*/

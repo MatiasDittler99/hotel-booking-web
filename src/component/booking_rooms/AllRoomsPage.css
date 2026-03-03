@@ -1,0 +1,50 @@
+/*ALL ROOMS PAGE STYLING START*/
+
+.all-rooms {
+    margin: 50px 0px 90px 0px;
+}
+
+.all-rooms h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.all-room-filter-div {
+    margin-left: 5rem;
+}
+
+.all-room-filter-div label {
+    color: var(--primary);
+}
+
+.filter-select-div {
+    width: 100%;
+    margin: 0px 0px 0px 4rem;
+}
+
+.add-room-button {
+    float: right;
+    margin-right: 70px;
+    font-weight: 600;
+}
+
+.all-room-filter-div label {
+    font-weight: 800;
+    font-size: 20px;
+
+}
+
+.all-room-filter-div select {
+    width: auto;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+
+
+
+/*ALL ROOMS PAGE STYLING ENDS*/

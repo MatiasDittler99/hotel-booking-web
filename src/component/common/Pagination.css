@@ -1,0 +1,43 @@
+/*PAGINATION COMPONENT STYLIMNG STARTS HERE*/
+
+
+.pagination-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    /* Add padding for spacing */
+}
+
+.pagination-ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+}
+
+.pagination-li {
+    margin: 0 5px;
+}
+
+.pagination-button {
+    background-color: var(--surface);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: var(--primary-dark);
+    color: var(--text);
+}
+
+/* Style for the current page button */
+.current-page {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+
+/*PAGINATION STYLING ENDS HERE*/

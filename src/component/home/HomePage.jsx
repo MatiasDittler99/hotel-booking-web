@@ -20,7 +20,7 @@ const HomePage = () => {
                     <div className="overlay"></div>
                     <div className="animated-texts overlay-content">
                         <h1>
-                            Bienvenido a <span className="phegon-color">Roomly Stay</span>
+                            Bienvenido a <span className="roomlystay-color">Roomly Stay</span>
                         </h1><br />
                         <h3>Adéntrese en un remanso de comodidad y cuidado.</h3>
                     </div>
@@ -33,7 +33,7 @@ const HomePage = () => {
 
             <h4><a className="view-rooms-home" href="/rooms">Todas las habitaciones</a></h4>
 
-            <h2 className="home-services">Servicios en <span className="phegon-color">Roomly Stay</span></h2>
+            <h2 className="home-services">Servicios en <span className="roomlystay-color">Roomly Stay</span></h2>
 
             {/* SERVICES SECTION */}
             <section className="service-section"><div className="service-card">

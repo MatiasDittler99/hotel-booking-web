@@ -1,0 +1,38 @@
+:root {
+    --primary: #00A8A8;        /* teal más vivo */
+    --primary-dark: #007373;
+
+    --accent: #FF6B4A;         /* coral más fuerte */
+    --accent-strong: #FF2E63;  /* rosa potente (energía) */
+
+    --background: #0F172A;     /* fondo oscuro moderno (NO negro puro) */
+    --surface: #1E293B;        /* cards / navbar */
+
+    --text: #E2E8F0;           /* texto claro */
+    --text-light: #94A3B8;     /* texto secundario */
+
+    --border: #334155;         /* bordes suaves oscuros */
+}
+
+* {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    color: var(--text-light);
+}
+
+body {
+    background: var(--background);
+}
+
+/* .colors {
+    color: pink;
+    color: #FF007F;
+    color: #CC0066;
+    color: #319055;
+    color: #003366;
+    color: #36454F;
+    color: #007F86;
+    color: #007F86;
+} */

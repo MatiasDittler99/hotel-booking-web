@@ -1,0 +1,90 @@
+/*EDIT ROOMPAGE STYLING*/
+
+.edit-room-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background-color: var(--surface);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.edit-room-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.error-message {
+    color: var(--accent-strong);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.edit-room-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-room-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-room-form .form-group input,
+.edit-room-form .form-group textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: .5px solid var(--border);
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+.edit-room-form .form-group textarea {
+    height: 100px;
+}
+
+.edit-room-form .form-group .room-photo,
+.edit-room-form .form-group .room-photo-preview {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+}
+
+.update-button,
+.delete-button {
+    display: inline-block;
+    width: calc(50% - 10px);
+    padding: 10px 20px;
+    margin: 10px 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.update-button {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.delete-button {
+    background-color: var(--accent-strong);
+    color: var(--text);
+}
+
+.update-button:hover,
+.delete-button:hover {
+    opacity: 0.8;
+}

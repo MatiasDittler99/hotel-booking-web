@@ -1,0 +1,258 @@
+/* Responsive styles */
+@media (min-width: 1400px) {
+    .find-booking-page,
+    .auth-container,
+    .profile-page,
+    .bookings-container {
+        max-width: 1000px;
+    }
+}
+
+
+
+@media (min-width: 1025px) and (max-width: 1088px) {
+
+    .find-booking-page {
+        max-width: 650px;   /* en vez de 50% solo en este rango */
+        margin: 60px auto 80px auto;
+        text-align: center;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .search-container input[type="text"] {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 0 15px 0;
+    }
+
+    .search-container button {
+        width: 200px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 20px;
+    }
+
+    .header-banner h1 {
+        font-size: 35px;
+    }
+
+    .header-banner h3 {
+        font-size: 22px;
+    }
+
+    .room-list-item {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .room-list-item-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .room-details {
+        margin-left: 0;
+    }
+
+    .find-booking-page {
+        max-width: 80%;
+    }
+
+    .search-container {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .service-card {
+        flex: 1 1 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 830px) {
+
+    .navbar {
+        padding: 20px 20px;   /* menos padding lateral */
+    }
+
+    .navbar-ul {
+        flex-wrap: nowrap;    /* evita que se baje */
+        gap: 12px;            /* reduce separación */
+        font-size: 16px;      /* baja un poco el tamaño */
+    }
+
+    .navbar-ul li {
+        margin-left: 0;       /* evita sumar ancho extra */
+        white-space: nowrap;  /* evita cortes de texto */
+    }
+}
+
+@media (min-width: 261px) and (max-width: 768px) {
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .navbar-ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar-ul li {
+        width: 100%;
+        margin: 0;
+    }
+
+    .navbar-ul li a {
+        display: block;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .navbar-ul li:last-child {
+        grid-column: span 2;
+    }
+
+    .navbar-ul li:last-child a {
+        text-align: center;
+    }
+
+    /* HEADER */
+    .header-banner {
+        height: 300px;
+    }
+
+    .header-banner h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .header-banner h3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* SEARCH HOME */
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .search-field {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .home-search-button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* ROOM LIST */
+    .room-list-item {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .room-list-item-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .room-details {
+        padding: 10px;
+    }
+
+    /* FIND BOOKING */
+    .find-booking-page {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .search-container input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    /* SERVICES */
+    .service-section {
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .service-card {
+        flex: 1 1 100%;
+    }
+
+    /* FOOTER */
+    .my-footer {
+        width: 100%;
+        text-align: center;
+        padding: 40px 0 10px 0; /* 🔥 esto lo baja */
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .header-banner h1 {
+        font-size: 18px;
+    }
+
+    .header-banner h3 {
+        font-size: 14px;
+    }
+
+    .auth-container,
+    .edit-room-container,
+    .profile-page,
+    .bookings-container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 769px) {
+    .my-footer {
+        padding: 8px 0;   /* antes era 20px */
+        font-size: 14px;  /* un poco más chico */
+    }
+}
+
+@media (min-width: 261px) and (max-width: 380px) {
+    .my-footer {
+        padding: 4px 0;   /* todavía más chico */
+        font-size: 12px;
+    }
+}

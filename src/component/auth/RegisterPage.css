@@ -1,0 +1,36 @@
+/**REGISTRATION PAGE START HERE STYLING*/
+
+
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 95%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 800;
+    border-radius: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+}
+
+
+/**REGISTRATION PAGE END HERE*/

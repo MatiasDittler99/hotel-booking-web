@@ -1,0 +1,78 @@
+/*ROOM SEARCH STARTS HERE*/
+
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px;
+    margin-left: 45px;
+}
+
+
+.search-field {
+    flex: 0 0 calc(25% - 10px);
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.search-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+/* .search-field input,
+.search-field select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    font-size: 16px;
+} */
+
+.search-field input,
+.search-field select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    font-size: 15px;
+    box-sizing: border-box;
+}
+.home-search-button {
+    margin-left: 10px;
+    padding: 15px 20px;
+    background-color: var(--primary);
+    font-weight: 600;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.home-search-button:hover {
+    background-color: var(--primary-dark);
+}
+
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+    box-sizing: border-box;
+}

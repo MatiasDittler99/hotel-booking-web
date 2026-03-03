@@ -1,0 +1,11 @@
+/* FOOTER STYLING */
+.my-footer {
+    color: var(--text);
+    background-color: var(--surface);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: 500;
+}

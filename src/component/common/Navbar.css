@@ -1,0 +1,82 @@
+/* General Navbar Styling */ 
+
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 25px 70px 25px 75px; 
+    background-color: var(--surface); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+    font-family: Arial, sans-serif; 
+    font-size: 20px; 
+} 
+
+.navbar-brand a { 
+    font-size: 24px; 
+    font-weight: bold; 
+    color: var(--primary); 
+    text-decoration: none; 
+} 
+
+.navbar-ul { 
+    list-style: none; 
+    display: flex; 
+    align-items: center; 
+    margin: 0; 
+    padding: 0; 
+    flex-wrap: wrap; 
+} 
+
+.navbar-ul li { 
+    margin-left: 20px; 
+} 
+
+.navbar-ul li a { 
+    text-decoration: none; 
+    color: var(--text-light); 
+    transition: color 0.5s; 
+} 
+
+.navbar-ul li a:hover { 
+    color: var(--accent); 
+} 
+
+.navbar-ul li a.active { 
+    color: var(--accent); 
+} 
+
+/**NAV BAR STYLING START HERE*/ 
+/* NAVBAR STYLING */
+
+.link-button { 
+    background-color: var(--primary); 
+    color: var(--text); 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+} 
+
+/**NAV BAR STYLING END HERE*/
+
+/* 🔥 Recuadros visibles siempre */
+
+.navbar-ul li a {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background-color: var(--surface); /* fondo permanente */
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+/* Hover */ 
+.navbar-ul li a:hover {
+    background-color: var(--accent);
+    color: var(--text);
+}
+
+/* Activo */
+.navbar-ul li a.active {
+    background-color: var(--primary);
+    color: var(--text);
+}

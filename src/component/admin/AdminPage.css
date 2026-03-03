@@ -1,0 +1,41 @@
+/* ADMIN HOME STYLE */
+.admin-page {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--surface);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.welcome-message {
+    font-size: 2em;
+    color: var(--text);
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.admin-button {
+    padding: 15px 30px;
+    font-size: 1em;
+    color: var(--text);
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.admin-button:hover {
+    background-color: var(--primary-dark);
+}
+

@@ -1,0 +1,111 @@
+/*HOME PAGE STYLING STARTS HERE*/
+
+.home {
+    margin-bottom: 100px;
+}
+
+/* HEADER */
+/* Header overlay */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text);
+    justify-content: flex-start;
+}
+
+/* The header banner */
+.header-banner {
+    /* background-image: url("../public/assets/images/hotel.webp"); */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 80vh;
+}
+
+.header-banner {
+    position: relative;
+    height: 500px;
+}
+
+.header-banner h1 {
+    font-size: 50px;
+    color: var(--text);
+}
+
+.header-banner h3 {
+    color: var(--text);
+    font-size: 30px;
+}
+
+/*View all rooms home section*/
+.view-rooms-home {
+    margin: 15px 0px 0px 4.6rem;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--accent-strong);
+
+}
+
+/*Home services section*/
+.home-services {
+    font-weight: 800;
+    color: var(--primary);
+    text-align: center;
+    margin: 5px auto 30px auto;
+}
+
+.roomlystay-color {
+    color: var(--accent);
+}
+
+.service-section {
+    margin: 0px 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    flex: 1 1 45%;
+    /* Two cards on one row, adjust width as needed */
+    margin: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+}
+
+.service-card img {
+    width: 50px;
+    /* Adjust size of icon */
+    margin-right: 10px;
+}
+
+.service-details {
+    flex: 1;
+}
+
+.service-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.service-description {
+    color: var(--text-light);
+}
+
+/*HOME PAGE STYLING ENDS HERE*/

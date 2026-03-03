@@ -1,0 +1,13 @@
+/*Edit Booking*/
+
+.acheive-booking {
+    margin: 10px auto;
+    background-color: var(--accent-strong);
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.acheive-booking:hover {
+    background-color: var(--accent);
+}
