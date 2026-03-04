@@ -116,12 +116,14 @@ const EditRoomPage = () => {
                     <input
                         type="file"
                         name="roomPhoto"
+                        data-testid="room-photo-input"
                         onChange={handleFileChange}
                     />
                 </div>
                 <div className="form-group">
-                    <label>Tipo de habitación</label>
+                    <label htmlFor="roomType">Tipo de habitación</label>
                     <input
+                        id="roomType"
                         type="text"
                         name="roomType"
                         value={roomDetails.roomType}
@@ -129,8 +131,9 @@ const EditRoomPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Precio de la habitación</label>
+                    <label htmlFor="roomPrice">Precio de la habitación</label>
                     <input
+                        id="roomPrice"
                         type="text"
                         name="roomPrice"
                         value={roomDetails.roomPrice}

@@ -66,8 +66,8 @@ const ManageRoomPage = () => {
       <h2>Todas las habitaciones</h2>
       <div className='all-room-filter-div' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className='filter-select-div'>
-          <label>Filtrar por tipo de habitación:</label>
-          <select value={selectedRoomType} onChange={handleRoomTypeChange}>
+          <label htmlFor="roomTypeSelect">Filtrar por tipo de habitación:</label>
+          <select id="roomTypeSelect" value={selectedRoomType} onChange={handleRoomTypeChange}>
             <option value="">Todo</option>
             {roomTypes.map((type) => (
               <option key={type} value={type}>

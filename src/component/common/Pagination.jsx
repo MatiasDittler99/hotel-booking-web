@@ -23,4 +23,3 @@ const Pagination = ({ roomsPerPage, totalRooms, currentPage, paginate }) => {
 };
 
 export default Pagination;
-

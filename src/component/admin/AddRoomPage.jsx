@@ -119,8 +119,8 @@ const AddRoomPage = () => {
                 </div>
 
                 <div className="form-group">
-                    <label>Tipo de habitación</label>
-                    <select value={roomDetails.roomType} onChange={handleRoomTypeChange}>
+                    <label htmlFor="roomType">Tipo de habitación</label>
+                    <select id="roomType" value={roomDetails.roomType} onChange={handleRoomTypeChange}>
                         <option value="">Seleccione un tipo de habitación</option>
                         {roomTypes.map(type => (
                             <option key={type} value={type}>{type}</option>
@@ -138,8 +138,9 @@ const AddRoomPage = () => {
                     )}
                 </div>
                 <div className="form-group">
-                    <label>Precio de la habitación</label>
+                    <label htmlFor="roomPrice">Precio de la habitación</label>
                     <input
+                        id="roomPrice"
                         type="text"
                         name="roomPrice"
                         value={roomDetails.roomPrice}
@@ -147,8 +148,9 @@ const AddRoomPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Descripción de la habitación</label>
+                    <label htmlFor="roomDescription">Descripción de la habitación</label>
                     <textarea
+                        id="roomDescription"
                         name="roomDescription"
                         value={roomDetails.roomDescription}
                         onChange={handleChange}

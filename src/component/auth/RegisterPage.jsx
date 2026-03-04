@@ -68,20 +68,20 @@ function RegisterPage() {
             <h2>Registrarse</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Nombre:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                    <label htmlFor="name">Nombre:</label>
+                    <input id="name" type="text" name="name" value={formData.name} onChange={handleInputChange} required />
                 </div>
                 <div className="form-group">
-                    <label>Correo electrónico:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                    <label htmlFor="email">Correo electrónico:</label>
+                    <input id="email" type="email" name="email" value={formData.email} onChange={handleInputChange} required />
                 </div>
                 <div className="form-group">
-                    <label>Número de teléfono:</label>
-                    <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
+                    <label htmlFor="phoneNumber">Número de teléfono:</label>
+                    <input id="phoneNumber" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
                 </div>
                 <div className="form-group">
-                    <label>Contraseña:</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleInputChange} required />
+                    <label htmlFor="password">Contraseña:</label>
+                    <input id="password" type="password" name="password" value={formData.password} onChange={handleInputChange} required />
                 </div>
                 <button type="submit">Registrarse</button>
             </form>

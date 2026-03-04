@@ -40,8 +40,9 @@ function LoginPage() {
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Correo electrónico: </label>
+                    <label htmlFor="email">Correo electrónico: </label>
                     <input
+                        id="email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -49,8 +50,9 @@ function LoginPage() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Contraseña: </label>
+                    <label htmlFor="password">Contraseña: </label>
                     <input
+                        id="password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
