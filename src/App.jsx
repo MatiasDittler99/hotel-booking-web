@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './component/common/Navbar';
@@ -19,21 +18,34 @@ import ProfilePage from './component/profile/ProfilePage';
 import EditProfilePage from './component/profile/EditProfilePage';
 import { ProtectedRoute, AdminRoute } from './service/Guard';
 
+/**
+ * App.js
+ * - Punto de entrada principal de la aplicación
+ * - Configura todas las rutas: públicas, protegidas y de administrador
+ * - Incluye Navbar y Footer globales
+ */
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        {/* Navbar siempre visible */}
         <Navbar />
+
         <div className="content">
           <Routes>
-            {/* Public Routes */}
+
+            {/* =========================
+                Public Routes
+                ========================= */}
             <Route exact path="/home" element={<HomePage />} />
             <Route exact path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/rooms" element={<AllRoomsPage />} />
             <Route path="/find-booking" element={<FindBookingPage />} />
 
-            {/* Protected Routes */}
+            {/* =========================
+                Protected Routes (usuarios autenticados)
+                ========================= */}
             <Route path="/room-details-book/:roomId"
               element={<ProtectedRoute element={<RoomDetailsBookingPage />} />}
             />
@@ -44,7 +56,9 @@ function App() {
               element={<ProtectedRoute element={<EditProfilePage />} />}
             />
 
-            {/* Admin Routes */}
+            {/* =========================
+                Admin Routes (requiere rol ADMIN)
+                ========================= */}
             <Route path="/admin"
               element={<AdminRoute element={<AdminPage />} />}
             />
@@ -64,10 +78,15 @@ function App() {
               element={<AdminRoute element={<EditBookingPage />} />}
             />
 
-            {/* Fallback Route */}
+            {/* =========================
+                Fallback Route
+                ========================= */}
+            {/* Redirige cualquier ruta desconocida a /login */}
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </div>
+
+        {/* Footer siempre visible */}
         <FooterComponent />
       </div>
     </BrowserRouter>

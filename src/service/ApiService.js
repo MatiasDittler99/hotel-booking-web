@@ -1,9 +1,25 @@
 import axios from "axios"
 
+/**
+ * ApiService
+ * Clase central para todas las llamadas a la API.
+ * - Maneja usuarios, habitaciones y reservas.
+ * - Incluye autenticación, verificación de roles y headers de autorización.
+ * 
+ * NOTA:
+ * - Usa axios para las llamadas HTTP.
+ * - Las funciones son estáticas, por lo que no es necesario instanciar la clase.
+ */
 export default class ApiService {
 
+    // Base URL de la API, configurable mediante variable de entorno
     static BASE_URL = import.meta.env.VITE_API_URL;
 
+    /**
+     * getHeader
+     * Retorna los headers estándar de autorización para las solicitudes autenticadas.
+     * @returns {Object} headers con Authorization Bearer token y Content-Type application/json
+     */
     static getHeader() {
         const token = localStorage.getItem("token");
         return {
@@ -12,24 +28,34 @@ export default class ApiService {
         };
     }
 
-    /**AUTH */
+    /** AUTHENTICATION **/
 
-    /* This  register a new user */
+    /** registerUser
+     * Registra un nuevo usuario en la API
+     * @param {Object} registration - datos de registro del usuario
+     * @returns {Object} respuesta de la API
+     */
     static async registerUser(registration) {
         const response = await axios.post(`${this.BASE_URL}/auth/register`, registration)
         return response.data
     }
 
-    /* This  login a registered user */
+    /** loginUser
+     * Inicia sesión un usuario registrado
+     * @param {Object} loginDetails - credenciales (email/password)
+     * @returns {Object} respuesta de la API con token
+     */
     static async loginUser(loginDetails) {
         const response = await axios.post(`${this.BASE_URL}/auth/login`, loginDetails)
         return response.data
     }
 
-    /***USERS */
+    /** USERS **/
 
-
-    /*  This is  to get the user profile */
+    /** getAllUsers
+     * Obtiene todos los usuarios (requiere autenticación)
+     * @returns {Array} lista de usuarios
+     */
     static async getAllUsers() {
         const response = await axios.get(`${this.BASE_URL}/users/all`, {
             headers: this.getHeader()
@@ -37,6 +63,10 @@ export default class ApiService {
         return response.data
     }
 
+    /** getUserProfile
+     * Obtiene la información del perfil del usuario logueado
+     * @returns {Object} datos del usuario
+     */
     static async getUserProfile() {
         const response = await axios.get(`${this.BASE_URL}/users/get-logged-in-profile-info`, {
             headers: this.getHeader()
@@ -44,8 +74,11 @@ export default class ApiService {
         return response.data
     }
 
-
-    /* This is the  to get a single user */
+    /** getUser
+     * Obtiene un usuario específico por ID
+     * @param {number} userId 
+     * @returns {Object} datos del usuario
+     */
     static async getUser(userId) {
         const response = await axios.get(`${this.BASE_URL}/users/get-by-id/${userId}`, {
             headers: this.getHeader()
@@ -53,7 +86,11 @@ export default class ApiService {
         return response.data
     }
 
-    /* This is the  to get user bookings by the user id */
+    /** getUserBookings
+     * Obtiene todas las reservas de un usuario específico
+     * @param {number} userId
+     * @returns {Object} usuario con sus reservas
+     */
     static async getUserBookings(userId) {
         const response = await axios.get(`${this.BASE_URL}/users/get-user-bookings/${userId}`, {
             headers: this.getHeader()
@@ -61,8 +98,11 @@ export default class ApiService {
         return response.data
     }
 
-
-    /* This is to delete a user */
+    /** deleteUser
+     * Elimina un usuario por ID
+     * @param {number} userId
+     * @returns {Object} respuesta de la API
+     */
     static async deleteUser(userId) {
         const response = await axios.delete(`${this.BASE_URL}/users/delete/${userId}`, {
             headers: this.getHeader()
@@ -70,8 +110,14 @@ export default class ApiService {
         return response.data
     }
 
-    /**ROOM */
-    /* This  adds a new room room to the database */
+    /** ROOMS **/
+
+    /** addRoom
+     * Agrega una nueva habitación a la base de datos
+     * - Soporta formData para subir imágenes
+     * @param {FormData} formData
+     * @returns {Object} respuesta de la API
+     */
     static async addRoom(formData) {
         const result = await axios.post(`${this.BASE_URL}/rooms/add`, formData, {
             headers: {
@@ -82,39 +128,58 @@ export default class ApiService {
         return result.data;
     }
 
-    /* This  gets all availavle rooms */
+    /** getAllAvailableRooms
+     * Obtiene todas las habitaciones disponibles
+     * @returns {Array} habitaciones
+     */
     static async getAllAvailableRooms() {
         const result = await axios.get(`${this.BASE_URL}/rooms/all-available-rooms`)
         return result.data
     }
 
-
-    /* This  gets all availavle by dates rooms from the database with a given date and a room type */
+    /** getAvailableRoomsByDateAndType
+     * Filtra habitaciones por fechas y tipo
+     * @param {string} checkInDate
+     * @param {string} checkOutDate
+     * @param {string} roomType
+     * @returns {Array} habitaciones disponibles
+     */
     static async getAvailableRoomsByDateAndType(checkInDate, checkOutDate, roomType) {
         const result = await axios.get(
-            `${this.BASE_URL}/rooms/available-rooms-by-date-and-type?checkInDate=${checkInDate}
-		&checkOutDate=${checkOutDate}&roomType=${roomType}`
+            `${this.BASE_URL}/rooms/available-rooms-by-date-and-type?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`
         )
         return result.data
     }
 
-    /* This  gets all room types from thee database */
+    /** getRoomTypes
+     * Obtiene todos los tipos de habitación
+     */
     static async getRoomTypes() {
         const response = await axios.get(`${this.BASE_URL}/rooms/types`)
         return response.data
     }
-    /* This  gets all rooms from the database */
+
+    /** getAllRooms
+     * Obtiene todas las habitaciones
+     */
     static async getAllRooms() {
         const result = await axios.get(`${this.BASE_URL}/rooms/all`)
         return result.data
     }
-    /* This funcction gets a room by the id */
+
+    /** getRoomById
+     * Obtiene información de una habitación específica
+     * @param {number} roomId
+     */
     static async getRoomById(roomId) {
         const result = await axios.get(`${this.BASE_URL}/rooms/room-by-id/${roomId}`)
         return result.data
     }
 
-    /* This  deletes a room by the Id */
+    /** deleteRoom
+     * Elimina una habitación por ID
+     * @param {number} roomId
+     */
     static async deleteRoom(roomId) {
         const result = await axios.delete(`${this.BASE_URL}/rooms/delete/${roomId}`, {
             headers: this.getHeader()
@@ -122,7 +187,12 @@ export default class ApiService {
         return result.data
     }
 
-    /* This updates a room */
+    /** updateRoom
+     * Actualiza una habitación existente
+     * - Soporta formData para imágenes
+     * @param {number} roomId
+     * @param {FormData} formData
+     */
     static async updateRoom(roomId, formData) {
         const result = await axios.put(`${this.BASE_URL}/rooms/update/${roomId}`, formData, {
             headers: {
@@ -133,20 +203,25 @@ export default class ApiService {
         return result.data;
     }
 
+    /** BOOKINGS **/
 
-    /**BOOKING */
-    /* This  saves a new booking to the databse */
+    /** bookRoom
+     * Crea una nueva reserva
+     * @param {number} roomId
+     * @param {number} userId
+     * @param {Object} booking
+     */
     static async bookRoom(roomId, userId, booking) {
-
         console.log("USER ID IS: " + userId)
-
         const response = await axios.post(`${this.BASE_URL}/bookings/book-room/${roomId}/${userId}`, booking, {
             headers: this.getHeader()
         })
         return response.data
     }
 
-    /* This  gets alll bokings from the database */
+    /** getAllBookings
+     * Obtiene todas las reservas
+     */
     static async getAllBookings() {
         const result = await axios.get(`${this.BASE_URL}/bookings/all`, {
             headers: this.getHeader()
@@ -154,13 +229,19 @@ export default class ApiService {
         return result.data
     }
 
-    /* This  get booking by the cnfirmation code */
+    /** getBookingByConfirmationCode
+     * Obtiene una reserva mediante su código de confirmación
+     * @param {string} bookingCode
+     */
     static async getBookingByConfirmationCode(bookingCode) {
         const result = await axios.get(`${this.BASE_URL}/bookings/get-by-confirmation-code/${bookingCode}`)
         return result.data
     }
 
-    /* This is the  to cancel user booking */
+    /** cancelBooking
+     * Cancela una reserva por ID
+     * @param {number} bookingId
+     */
     static async cancelBooking(bookingId) {
         const result = await axios.delete(`${this.BASE_URL}/bookings/cancel/${bookingId}`, {
             headers: this.getHeader()
@@ -168,26 +249,37 @@ export default class ApiService {
         return result.data
     }
 
+    /** AUTH CHECKERS **/
 
-    /**AUTHENTICATION CHECKER */
+    /** logout
+     * Elimina token y rol del localStorage
+     */
     static logout() {
         localStorage.removeItem('token')
         localStorage.removeItem('role')
     }
 
+    /** isAuthenticated
+     * Verifica si hay token activo
+     */
     static isAuthenticated() {
         const token = localStorage.getItem('token')
         return !!token
     }
 
+    /** isAdmin
+     * Verifica si el rol del usuario es ADMIN
+     */
     static isAdmin() {
         const role = localStorage.getItem('role')
         return role === 'ADMIN'
     }
 
+    /** isUser
+     * Verifica si el rol del usuario es USER
+     */
     static isUser() {
         const role = localStorage.getItem('role')
         return role === 'USER'
     }
 }
-// export default new ApiService();

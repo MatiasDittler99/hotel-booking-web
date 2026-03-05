@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: node:20                        # Base de Node 20, compatible con Vite y React 18+
+    working_dir: /app                     # Carpeta de trabajo dentro del contenedor
+    volumes:
+      - .:/app                            # Sincroniza tu proyecto local con el contenedor
+      - /app/node_modules                 # Evita que node_modules local sobreescriba el contenedor
+    command: npm run dev -- --host        # Levanta Vite en modo desarrollo, accesible desde fuera del contenedor
+    ports:
+      - "5173:5173"                       # Expone el puerto 5173 del contenedor al host

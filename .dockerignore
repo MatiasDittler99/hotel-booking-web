@@ -1,0 +1,33 @@
+# ================================
+# Dependencias locales
+# ================================
+node_modules    # Evitar subir todas las librerías instaladas por npm/yarn, ocupan mucho espacio
+
+# ================================
+# Build / distribución
+# ================================
+dist            # Carpeta generada al compilar la app (Vite, React, etc.), no se versiona
+
+# ================================
+# Git
+# ================================
+.git            # Repositorio local, nunca se versiona
+.gitignore      # Este archivo sí se versiona normalmente, pero puede excluirse si hay reglas específicas
+
+# ================================
+# Archivos locales de configuración
+# ================================
+.env            # Variables de entorno con datos sensibles, nunca subir
+.env.example    # Opcional de ejemplo, sí se puede subir
+
+# ================================
+# Docker
+# ================================
+docker-compose.yml
+Dockerfile      # Opcional subir a repo público, cuidado con credenciales
+
+# ================================
+# Logs
+# ================================
+npm-debug.log
+yarn-error.log

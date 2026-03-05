@@ -1,46 +1,50 @@
-/* src/component/user/EditProfilePage.css */
-
+/* Contenedor principal de la página de edición de perfil */
 .edit-profile-page {
-    max-width: 800px;
-    margin: 20px auto auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: var(--surface);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    max-width: 800px;               /* Limita el ancho para que no se estire demasiado en pantallas grandes */
+    margin: 20px auto auto;         /* Centrado horizontal y margen superior de 20px */
+    padding: 20px;                  /* Espacio interno para separar contenido del borde */
+    font-family: Arial, sans-serif; /* Tipografía clara y legible */
+    background-color: var(--surface); /* Fondo de la tarjeta principal */
+    border-radius: 8px;             /* Bordes redondeados para un look moderno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra suave para dar profundidad */
 }
 
+/* Título de la página */
 .edit-profile-page h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--primary);
+    text-align: center;             /* Centra el título */
+    margin-bottom: 20px;            /* Separación del contenido siguiente */
+    color: var(--primary);          /* Color principal del tema */
 }
 
+/* Sección de detalles del perfil */
 .profile-details {
-    margin-bottom: 20px;
+    margin-bottom: 20px;            /* Espacio debajo de cada sección de detalles */
 }
 
 .profile-details p {
-    margin: 5px 0;
+    margin: 5px 0;                  /* Espacio vertical entre párrafos */
 }
 
+/* Botón de eliminación de perfil */
 .delete-profile-button {
-    background-color: var(--accent-strong);
-    color: var(--text);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: block;
-    margin: 20px auto;
+    background-color: var(--accent-strong); /* Color de alerta para acciones críticas */
+    color: var(--text);                      /* Texto legible sobre el fondo */
+    border: none;                            /* Sin borde */
+    padding: 10px 20px;                      /* Espaciado interno cómodo */
+    border-radius: 5px;                      /* Bordes ligeramente redondeados */
+    cursor: pointer;                         /* Cursor de mano para indicar clic */
+    transition: background-color 0.3s;       /* Suaviza el cambio de color al hover */
+    display: block;                          /* Para centrar el botón usando margin auto */
+    margin: 20px auto;                       /* Centrado horizontal con separación vertical */
 }
 
+/* Hover del botón eliminar */
 .delete-profile-button:hover {
-    background-color: var(--accent);
+    background-color: var(--accent); /* Color más claro/activo al pasar el mouse */
 }
 
+/* Mensaje de error */
 .error-message {
-    color: var(--accent-strong);
-    text-align: center;
+    color: var(--accent-strong); /* Color de alerta */
+    text-align: center;          /* Centrado para visibilidad */
 }

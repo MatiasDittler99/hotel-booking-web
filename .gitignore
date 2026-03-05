@@ -1,30 +1,40 @@
+# ================================
 # Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# ================================
+logs                # Carpeta de logs personalizados
+*.log               # Archivos de log generales
+npm-debug.log*      # Logs de npm
+yarn-debug.log*     # Logs de yarn
+yarn-error.log*     # Logs de errores yarn
+pnpm-debug.log*     # Logs de pnpm
+lerna-debug.log*    # Logs de Lerna (monorepos)
 
-# Dependencies
-node_modules
+# ================================
+# Dependencias
+# ================================
+node_modules        # Evita subir librerías instaladas, ocupan mucho espacio
 
-# Build
-dist
-dist-ssr
+# ================================
+# Build / Distribución
+# ================================
+dist                # Build frontend (Vite/React)
+dist-ssr            # Build SSR si existiera (Next.js u otro framework)
 
-# Enviroment variables
-.env
-*.local
+# ================================
+# Variables de entorno
+# ================================
+.env                # Variables sensibles
+*.local             # Archivos locales de configuración
 
-# Editor directories and files
-.vscode/*
+# ================================
+# Archivos y carpetas del editor
+# ================================
+.vscode/*           # Configuración VSCode, excepto extensiones compartidas
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea               # Configuración JetBrains
+.DS_Store           # Archivos ocultos macOS
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw?               # Archivos temporales de editores

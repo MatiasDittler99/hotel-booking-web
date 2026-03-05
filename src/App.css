@@ -1,38 +1,33 @@
+/* ================================
+   Variables CSS (Custom Properties)
+   ================================ */
 :root {
-    --primary: #00A8A8;        /* teal más vivo */
-    --primary-dark: #007373;
+    --primary: #00A8A8;        /* Teal brillante: color principal para botones, links, highlights */
+    --primary-dark: #007373;   /* Variante más oscura de primary para hover o estados activos */
 
-    --accent: #FF6B4A;         /* coral más fuerte */
-    --accent-strong: #FF2E63;  /* rosa potente (energía) */
+    --accent: #FF6B4A;         /* Coral vibrante: para llamar atención en botones secundarios, alerts */
+    --accent-strong: #FF2E63;  /* Rosa potente: para elementos de alto impacto, warnings o energía visual */
 
-    --background: #0F172A;     /* fondo oscuro moderno (NO negro puro) */
-    --surface: #1E293B;        /* cards / navbar */
+    --background: #0F172A;     /* Fondo principal oscuro moderno (evita negro puro para mejor contraste) */
+    --surface: #1E293B;        /* Superficies: cards, navbar, contenedores destacados */
 
-    --text: #E2E8F0;           /* texto claro */
-    --text-light: #94A3B8;     /* texto secundario */
+    --text: #E2E8F0;           /* Texto principal claro para buena legibilidad sobre fondo oscuro */
+    --text-light: #94A3B8;     /* Texto secundario para elementos menos importantes, placeholders */
 
-    --border: #334155;         /* bordes suaves oscuros */
+    --border: #334155;         /* Bordes sutiles en dark mode para separar secciones */
 }
 
+/* ================================
+   Reset y estilos globales
+   ================================ */
 * {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    color: var(--text-light);
+    margin: 0;                     /* Elimina margen por defecto */
+    font-family: Arial, sans-serif; /* Tipografía limpia y universal */
+    box-sizing: border-box;        /* Evita problemas de padding + width */
+    overflow-x: hidden;            /* Previene scroll horizontal accidental */
+    color: var(--text-light);      /* Color de texto secundario por defecto */
 }
 
 body {
-    background: var(--background);
+    background: var(--background); /* Fondo oscuro consistente para toda la app */
 }
-
-/* .colors {
-    color: pink;
-    color: #FF007F;
-    color: #CC0066;
-    color: #319055;
-    color: #003366;
-    color: #36454F;
-    color: #007F86;
-    color: #007F86;
-} */

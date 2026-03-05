@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: .                            # Construye la imagen a partir del Dockerfile en la raíz
+    container_name: hotel-frontend     # Nombre del contenedor para identificación fácil
+    ports:
+      - "3000:80"                       # Mapea el puerto 80 del contenedor al 3000 del host
+    restart: unless-stopped             # Auto-reinicio en caso de fallo o reinicio del host

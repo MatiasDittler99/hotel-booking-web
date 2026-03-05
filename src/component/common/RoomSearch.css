@@ -1,78 +1,77 @@
-/*ROOM SEARCH STARTS HERE*/
+/* ROOM SEARCH STARTS HERE */
 
+/* Contenedor principal del buscador */
 .search-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 20px;
-    margin-left: 45px;
+    display: flex;                  /* Usamos flexbox para alinear elementos horizontalmente */
+    flex-wrap: wrap;                /* Permite que los elementos se muevan a la siguiente línea si no caben */
+    justify-content: left;          /* Alinea los elementos a la izquierda */
+    align-items: center;            /* Centra verticalmente los elementos dentro del contenedor */
+    margin-bottom: 10px;            /* Espacio inferior entre el buscador y los elementos siguientes */
+    padding: 20px;                  /* Espacio interno para separar los elementos de los bordes */
+    margin-left: 45px;              /* Margen izquierdo fijo para ajustar la posición en la página */
 }
 
-
+/* Cada campo de búsqueda individual */
 .search-field {
-    flex: 0 0 calc(25% - 10px);
-    margin: 10px;
-    padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background-color: var(--surface);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    flex: 0 0 calc(25% - 10px);    /* Ocupa un 25% del ancho del contenedor menos el margen */
+    margin: 10px;                   /* Espaciado externo entre campos */
+    padding: 15px;                  /* Espaciado interno */
+    border: 1px solid var(--border); /* Borde de 1px con color definido en la variable CSS */
+    border-radius: 8px;             /* Bordes redondeados para un estilo moderno */
+    background-color: var(--surface); /* Fondo con color definido en la variable CSS */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra suave para dar profundidad */
 }
 
+/* Etiqueta del input dentro del campo de búsqueda */
 .search-field label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--text-light);
+    display: block;                 /* Se comporta como bloque para que el label quede arriba del input */
+    margin-bottom: 8px;             /* Espacio entre el label y el input */
+    font-weight: bold;              /* Destaca el label en negrita */
+    color: var(--text-light);       /* Color del texto más suave que el normal */
 }
 
-/* .search-field input,
-.search-field select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid var(--border);
-    font-size: 16px;
-} */
-
+/* Inputs y selects del buscador */
 .search-field input,
 .search-field select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid var(--border);
-    font-size: 15px;
-    box-sizing: border-box;
+    width: 100%;                    /* Ocupa todo el ancho del contenedor padre */
+    padding: 12px;                  /* Espacio interno cómodo para escribir */
+    border-radius: 5px;             /* Bordes ligeramente redondeados */
+    border: 1px solid var(--border); /* Borde definido por variable */
+    font-size: 15px;                /* Tamaño de letra legible y uniforme */
+    box-sizing: border-box;         /* Incluye padding y borde dentro del ancho total */
 }
+
+/* Botón de búsqueda principal */
 .home-search-button {
-    margin-left: 10px;
-    padding: 15px 20px;
-    background-color: var(--primary);
-    font-weight: 600;
-    color: var(--text);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    margin-left: 10px;              /* Separación respecto al último campo */
+    padding: 15px 20px;             /* Espacio interno para hacer el botón más grande y clickeable */
+    background-color: var(--primary); /* Color principal definido en variable CSS */
+    font-weight: 600;               /* Texto semi-negrita para resaltar */
+    color: var(--text);             /* Color de texto contrastante */
+    border: none;                   /* Sin borde por defecto */
+    border-radius: 5px;             /* Bordes redondeados consistentes con los inputs */
+    cursor: pointer;                /* Cambia el cursor para indicar que es clickeable */
+    font-size: 16px;                /* Tamaño de fuente consistente con los inputs */
+    transition: background-color 0.3s; /* Transición suave al cambiar color */
 }
 
+/* Hover del botón de búsqueda */
 .home-search-button:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-dark); /* Cambio de color al pasar el mouse para feedback visual */
 }
 
-
+/* Wrapper de React Datepicker para que se adapte al ancho del contenedor */
 .react-datepicker-wrapper {
-    width: 100%;
+    width: 100%;                     /* Ocupa todo el ancho disponible */
 }
 
+/* Contenedor interno del input del datepicker */
 .react-datepicker__input-container {
-    width: 100%;
+    width: 100%;                     /* Asegura que el input ocupe todo el ancho del wrapper */
 }
 
+/* Input del datepicker */
 .react-datepicker__input-container input {
-    width: 100%;
-    box-sizing: border-box;
+    width: 100%;                     /* Input responsivo dentro del contenedor */
+    box-sizing: border-box;          /* Incluye padding y border en el ancho total */
 }

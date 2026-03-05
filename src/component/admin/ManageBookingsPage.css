@@ -1,4 +1,24 @@
-/* General Styling */
+/* =====================================================
+   BOOKINGS PAGE - STYLESHEET
+   -----------------------------------------------------
+   Estilos generales para la vista de gestión / consulta
+   de reservas.
+
+   Objetivos:
+   - Layout centrado tipo "card"
+   - Jerarquía visual clara
+   - Área de búsqueda accesible y alineada
+   - Integración con design system vía CSS variables
+   ===================================================== */
+
+
+/*
+ * Contenedor principal de la página de reservas.
+ * - Ancho máximo controlado para mejorar legibilidad.
+ * - Centrado horizontal automático.
+ * - Espaciado interno consistente.
+ * - Estética tipo card con fondo surface y sombra.
+ */
 .bookings-container {
     max-width: 900px;
     margin: 20px auto;
@@ -8,6 +28,17 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
+
+/*
+ * Título principal de la sección.
+ * - Centrado para reforzar jerarquía.
+ * - Tamaño aumentado para mayor prominencia.
+ * - Color primario del sistema para coherencia visual.
+ *
+ * Nota: Al usar selector global h2 puede impactar
+ * otras vistas. En proyectos grandes se recomienda
+ * scopearlo (ej: .bookings-container h2).
+ */
 h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -15,6 +46,13 @@ h2 {
     color: var(--primary);
 }
 
+
+/*
+ * Contenedor del área de búsqueda.
+ * - Layout flex para alineación horizontal.
+ * - Centrado completo.
+ * - Separación vertical generosa para respiración visual.
+ */
 .search-div {
     display: flex;
     justify-content: center;
@@ -22,12 +60,30 @@ h2 {
     margin: 40px auto 20px auto;
 }
 
+
+/*
+ * Label del campo de búsqueda.
+ * - Separación lateral del input.
+ * - Peso tipográfico mayor para accesibilidad.
+ * - Uso de color secundario para menor agresividad visual.
+ */
 .search-div label {
     margin-right: 10px;
     font-weight: bold;
     color: var(--text-light);
 }
 
+
+/*
+ * Input de búsqueda.
+ * - Padding interno para mejor área clickeable.
+ * - Borde consistente con el sistema.
+ * - Border radius suave.
+ * - Ancho fijo para control visual.
+ *
+ * En layouts responsivos podría reemplazarse por
+ * width: 100% con max-width.
+ */
 .search-div input {
     padding: 8px;
     border: 1px solid var(--border);

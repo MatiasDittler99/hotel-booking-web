@@ -1,65 +1,81 @@
-/*HOME PAGE STYLING STARTS HERE*/
+/*============================*/
+/* HOME PAGE STYLING STARTS HERE */
+/*============================*/
 
+/* Contenedor principal de la home, deja espacio inferior para footer */
 .home {
     margin-bottom: 100px;
 }
 
-/* HEADER */
-/* Header overlay */
+/*============================*/
+/* HEADER STYLING */
+/*============================*/
 
+/* Overlay oscuro sobre la imagen de fondo para mejorar contraste */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* semitransparente */
 }
 
+/* Contenido dentro del overlay (texto, botones, etc.) */
 .overlay-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
     color: var(--text);
-    justify-content: flex-start;
+    justify-content: flex-start; /* Alinea el contenido al inicio horizontalmente */
 }
 
-/* The header banner */
+/* Banner principal de la home con imagen de fondo */
 .header-banner {
     /* background-image: url("../public/assets/images/hotel.webp"); */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 80vh;
+    background-size: cover;       /* La imagen ocupa todo el contenedor */
+    background-position: center;   /* Centra la imagen */
+    position: relative;            /* Permite overlay absoluto */
+    height: 80vh;                  /* Altura relativa a la ventana */
 }
 
+/* Ajuste específico de altura */
 .header-banner {
     position: relative;
     height: 500px;
 }
 
+/* Título principal dentro del header */
 .header-banner h1 {
     font-size: 50px;
     color: var(--text);
 }
 
+/* Subtítulo dentro del header */
 .header-banner h3 {
     color: var(--text);
     font-size: 30px;
 }
 
-/*View all rooms home section*/
+/*============================*/
+/* VIEW ALL ROOMS LINK HOME */
+/*============================*/
+
+/* Link o texto que invita a ver todas las habitaciones */
 .view-rooms-home {
-    margin: 15px 0px 0px 4.6rem;
+    margin: 15px 0px 0px 4.6rem; /* margen para separarlo del borde y otros elementos */
     font-size: 20px;
     font-weight: 500;
     text-decoration: underline;
-    color: var(--accent-strong);
-
+    color: var(--accent-strong); /* Color llamativo */
 }
 
-/*Home services section*/
+/*============================*/
+/* HOME SERVICES SECTION */
+/*============================*/
+
+/* Título de la sección de servicios */
 .home-services {
     font-weight: 800;
     color: var(--primary);
@@ -67,45 +83,52 @@
     margin: 5px auto 30px auto;
 }
 
+/* Color destacado para palabras específicas */
 .roomlystay-color {
     color: var(--accent);
 }
 
+/* Contenedor que agrupa todas las tarjetas de servicio */
 .service-section {
     margin: 0px 60px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que los cards bajen de fila en pantallas pequeñas */
 }
 
+/* Tarjetas de servicio */
 .service-card {
-    flex: 1 1 45%;
-    /* Two cards on one row, adjust width as needed */
+    flex: 1 1 45%; /* Cada tarjeta ocupa casi la mitad de la fila */
     margin: 10px;
     border: 1px solid var(--border);
     border-radius: 5px;
     padding: 15px;
-    display: flex;
+    display: flex; /* Permite alinear icono y texto horizontalmente */
 }
 
+/* Iconos dentro de las tarjetas */
 .service-card img {
-    width: 50px;
-    /* Adjust size of icon */
-    margin-right: 10px;
+    width: 50px;   /* Tamaño fijo del icono */
+    margin-right: 10px; /* Separación entre icono y contenido */
 }
 
+/* Contenido textual de la tarjeta */
 .service-details {
-    flex: 1;
+    flex: 1; /* Ocupa todo el espacio restante */
 }
 
+/* Título dentro de cada tarjeta */
 .service-title {
     font-size: 18px;
     margin-bottom: 5px;
-    font-weight: 900;
+    font-weight: 900; /* Muy destacado */
     color: var(--primary);
 }
 
+/* Descripción del servicio */
 .service-description {
-    color: var(--text-light);
+    color: var(--text-light); /* Menos destacada visualmente */
 }
 
-/*HOME PAGE STYLING ENDS HERE*/
+/*============================*/
+/* HOME PAGE STYLING ENDS HERE */
+/*============================*/

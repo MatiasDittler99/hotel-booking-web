@@ -1,28 +1,67 @@
-/* ADMIN HOME STYLE */
+/* =====================================================
+   ADMIN HOME - STYLESHEET
+   -----------------------------------------------------
+   Estilos correspondientes a la página principal del 
+   panel de administración.
+
+   Objetivos:
+   - Layout centrado y contenido acotado
+   - Diseño limpio y consistente con sistema de diseño
+   - Uso de variables CSS para theming
+   - Interacciones visuales claras (hover states)
+   ===================================================== */
+
+
+/* 
+ * Contenedor principal del panel de administración.
+ * - Limita el ancho máximo para mejorar legibilidad.
+ * - Centrado horizontal automático.
+ * - Estética tipo "card" con sombra y bordes redondeados.
+ */
 .admin-page {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: var(--surface);
+    background-color: var(--surface); /* Color de fondo basado en sistema de diseño */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 
+
+/* 
+ * Mensaje de bienvenida del administrador.
+ * - Jerarquía visual fuerte (2em + bold).
+ * - Uso de color primario para reforzar identidad visual.
+ */
 .welcome-message {
     font-size: 2em;
-    color: var(--text);
     margin-bottom: 20px;
     font-weight: bold;
     color: var(--primary);
 }
 
+
+/* 
+ * Contenedor de acciones administrativas.
+ * - Layout flexible mediante Flexbox.
+ * - Centrado horizontal.
+ * - Separación uniforme entre botones.
+ */
 .admin-actions {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
+
+/* 
+ * Botón principal del panel.
+ * - Consistente con la paleta primaria.
+ * - Diseño accesible con buen contraste.
+ * - Transición suave para mejorar UX.
+ * - Sombra para profundidad visual.
+ */
 .admin-button {
     padding: 15px 30px;
     font-size: 1em;
@@ -35,7 +74,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
+
+/* 
+ * Estado hover:
+ * - Feedback visual inmediato.
+ * - Oscurecimiento del color primario
+ *   para indicar interactividad.
+ */
 .admin-button:hover {
     background-color: var(--primary-dark);
 }
-

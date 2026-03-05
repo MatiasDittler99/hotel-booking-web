@@ -1,4 +1,20 @@
-/* Auth */
+/* ==========================================================================
+   AUTH MODULE STYLES
+   ==========================================================================
+   Estilos correspondientes a las vistas de autenticación (Login / Register).
+   Se prioriza:
+   - Diseño centrado y limpio
+   - Claridad visual
+   - Uso de variables CSS para mantener coherencia temática
+   ========================================================================== */
+
+/**
+ * Contenedor principal del módulo de autenticación.
+ * - Ancho máximo controlado para mejorar legibilidad.
+ * - Centrado horizontal mediante margin auto.
+ * - Espaciado inferior adicional para separación del footer.
+ * - Uso de variables para mantener consistencia con el sistema de diseño.
+ */
 .auth-container {
     max-width: 400px;
     padding: 20px;
@@ -8,30 +24,56 @@
     margin: 20px auto 50px auto;
 }
 
+/**
+ * Título principal del formulario (Login / Register).
+ * - Centrado para jerarquía visual clara.
+ * - Separación inferior para estructurar el layout.
+ * - Color primario definido por el sistema de diseño.
+ */
 .auth-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--primary);
 }
 
+/**
+ * Contenedor del enlace de registro alternativo.
+ * - Separación superior respecto al formulario.
+ * - Tamaño reducido para indicar contenido secundario.
+ */
 .register-link {
     margin-top: 20px;
     font-size: 13px;
 }
 
+/**
+ * Enlace dentro del bloque de registro.
+ * - Se utiliza el color primario para reforzar acción interactiva.
+ * - Se elimina subrayado para mantener estética limpia.
+ */
 .register-link a {
     color: var(--primary);
     text-decoration: none;
 }
 
+/**
+ * Grupo de campos del formulario.
+ * - Espaciado inferior uniforme entre inputs.
+ */
 .form-group {
     margin-bottom: 15px;
 }
 
+/**
+ * Etiquetas de los campos.
+ * - Se fuerzan a bloque para alineación vertical correcta.
+ * - Peso tipográfico elevado para mejorar legibilidad.
+ */
 .form-group label {
     display: block;
     font-weight: bold;
 }
 
-
-/**LOGIN CSS END HERE*/
+/* ==========================================================================
+   END OF LOGIN / AUTH STYLES
+   ========================================================================== */

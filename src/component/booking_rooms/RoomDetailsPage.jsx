@@ -1,31 +1,63 @@
+/**
+ * RoomDetailsPage Component
+ * -----------------------------------------------------------------------------
+ * Página de detalle de habitación.
+ *
+ * Responsabilidades principales:
+ * - Mostrar información completa de la habitación (tipo, precio, descripción, foto).
+ * - Mostrar reservas existentes asociadas a la habitación.
+ * - Permitir selección de fechas de check-in y check-out.
+ * - Permitir ingreso de número de adultos y niños para la reserva.
+ * - Calcular precio total y total de invitados.
+ * - Confirmar y aceptar reserva a través del ApiService.
+ * - Manejar errores y mostrar mensajes de éxito.
+ *
+ * Dependencias externas:
+ * - react-datepicker para selección de fechas.
+ * - ApiService para llamadas a la API.
+ * - useNavigate y useParams de react-router-dom para navegación y parámetros de URL.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import ApiService from '../../service/ApiService'; // Assuming your service is in a file called ApiService.js
+import ApiService from '../../service/ApiService';
 import DatePicker from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
 
 const RoomDetailsPage = () => {
-  const navigate = useNavigate(); // Access the navigate function to navigate
-  const { roomId } = useParams(); // Get room ID from URL parameters
-  const [roomDetails, setRoomDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
-  const [error, setError] = useState(null); // Track any errors
-  const [checkInDate, setCheckInDate] = useState(null); // State variable for check-in date
-  const [checkOutDate, setCheckOutDate] = useState(null); // State variable for check-out date
-  const [numAdults, setNumAdults] = useState(1); // State variable for number of adults
-  const [numChildren, setNumChildren] = useState(0); // State variable for number of children
-  const [totalPrice, setTotalPrice] = useState(0); // State variable for total booking price
-  const [totalGuests, setTotalGuests] = useState(1); // State variable for total number of guests
-  const [showDatePicker, setShowDatePicker] = useState(false); // State variable to control date picker visibility
-  const [userId, setUserId] = useState(''); // Set user id
-  const [showMessage, setShowMessage] = useState(false); // State variable to control message visibility
-  const [confirmationCode, setConfirmationCode] = useState(''); // State variable for booking confirmation code
-  const [errorMessage, setErrorMessage] = useState(''); // State variable for error message
+  /** Hook de navegación */
+  const navigate = useNavigate();
 
+  /** Parámetro de URL: ID de la habitación */
+  const { roomId } = useParams();
+
+  /** Estados principales */
+  const [roomDetails, setRoomDetails] = useState(null); // Información completa de la habitación
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
+  const [error, setError] = useState(null); // Mensaje de error global
+  const [checkInDate, setCheckInDate] = useState(null); // Fecha de check-in seleccionada
+  const [checkOutDate, setCheckOutDate] = useState(null); // Fecha de check-out seleccionada
+  const [numAdults, setNumAdults] = useState(1); // Número de adultos
+  const [numChildren, setNumChildren] = useState(0); // Número de niños
+  const [totalPrice, setTotalPrice] = useState(0); // Precio total de la reserva
+  const [totalGuests, setTotalGuests] = useState(1); // Número total de invitados
+  const [showDatePicker, setShowDatePicker] = useState(false); // Mostrar u ocultar DatePicker
+  const [userId, setUserId] = useState(''); // ID del usuario actual
+  const [showMessage, setShowMessage] = useState(false); // Mostrar mensaje de éxito
+  const [confirmationCode, setConfirmationCode] = useState(''); // Código de confirmación de la reserva
+  const [errorMessage, setErrorMessage] = useState(''); // Mensaje de error local
+
+  /**
+   * useEffect principal
+   * -----------------------------------------------------------------------------
+   * - Obtiene detalles de la habitación desde la API según roomId.
+   * - Obtiene perfil del usuario actual para registrar la reserva.
+   * - Maneja estado de carga y errores.
+   */
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsLoading(true); // Set loading state to true
+        setIsLoading(true);
         const response = await ApiService.getRoomById(roomId);
         setRoomDetails(response.room);
         const userProfile = await ApiService.getUserProfile();
@@ -33,38 +65,37 @@ const RoomDetailsPage = () => {
       } catch (error) {
         setError(error.response?.data?.message || error.message);
       } finally {
-        setIsLoading(false); // Set loading state to false after fetching or error
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, [roomId]); // Re-run effect when roomId changes
+  }, [roomId]);
 
-
+  /**
+   * handleConfirmBooking
+   * -----------------------------------------------------------------------------
+   * - Valida fechas seleccionadas y número de huéspedes.
+   * - Calcula total de días, invitados y precio total.
+   * - Actualiza estados correspondientes.
+   */
   const handleConfirmBooking = async () => {
-    // Check if check-in and check-out dates are selected
     if (!checkInDate || !checkOutDate) {
       setErrorMessage('Por favor seleccione las fechas de entrada y salida.');
-      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      setTimeout(() => setErrorMessage(''), 5000);
       return;
     }
-
-    // Check if number of adults and children are valid
     if (isNaN(numAdults) || numAdults < 1 || isNaN(numChildren) || numChildren < 0) {
       setErrorMessage('Introduzca números válidos para adultos y niños.');
-      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      setTimeout(() => setErrorMessage(''), 5000);
       return;
     }
 
-    // Calculate total number of days
-    const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+    const oneDay = 24 * 60 * 60 * 1000;
     const startDate = new Date(checkInDate);
     const endDate = new Date(checkOutDate);
     const totalDays = Math.round(Math.abs((endDate - startDate) / oneDay)) + 1;
 
-    // Calculate total number of guests
     const totalGuests = numAdults + numChildren;
-
-    // Calculate total price
     const roomPricePerNight = roomDetails.roomPrice;
     const totalPrice = roomPricePerNight * totalDays;
 
@@ -72,79 +103,66 @@ const RoomDetailsPage = () => {
     setTotalGuests(totalGuests);
   };
 
+  /**
+   * acceptBooking
+   * -----------------------------------------------------------------------------
+   * - Formatea fechas para compatibilidad con la API.
+   * - Crea objeto de reserva y envía petición a ApiService.
+   * - Muestra mensaje de éxito y redirige a la página de habitaciones.
+   * - Maneja errores de API.
+   */
   const acceptBooking = async () => {
     try {
-
-      // Ensure checkInDate and checkOutDate are Date objects
       const startDate = new Date(checkInDate);
       const endDate = new Date(checkOutDate);
 
-      // Log the original dates for debugging
-      console.log("Fecha de entrada original:", startDate);
-      console.log("Fecha de salida original:", endDate);
+      const formattedCheckInDate = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000))
+        .toISOString().split('T')[0];
+      const formattedCheckOutDate = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
+        .toISOString().split('T')[0];
 
-      // Convert dates to YYYY-MM-DD format, adjusting for time zone differences
-      const formattedCheckInDate = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
-      const formattedCheckOutDate = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
-
-
-      // Log the original dates for debugging
-      console.log("Fecha de check-in formateada:", formattedCheckInDate);
-      console.log("Fecha de salida formateada:", formattedCheckOutDate);
-
-      // Create booking object
       const booking = {
         checkInDate: formattedCheckInDate,
         checkOutDate: formattedCheckOutDate,
         numOfAdults: numAdults,
         numOfChildren: numChildren
       };
-      console.log(booking)
-      console.log(checkOutDate)
 
-      // Make booking
       const response = await ApiService.bookRoom(roomId, userId, booking);
       if (response.statusCode === 200) {
-        setConfirmationCode(response.bookingConfirmationCode); // Set booking confirmation code
-        setShowMessage(true); // Show message
-        // Hide message and navigate to homepage after 5 seconds
+        setConfirmationCode(response.bookingConfirmationCode);
+        setShowMessage(true);
         setTimeout(() => {
           setShowMessage(false);
-          navigate('/rooms'); // Navigate to rooms
+          navigate('/rooms');
         }, 10000);
       }
     } catch (error) {
       setErrorMessage(error.response?.data?.message || error.message);
-      setTimeout(() => setErrorMessage(''), 5000); // Clear error message after 5 seconds
+      setTimeout(() => setErrorMessage(''), 5000);
     }
   };
 
-  if (isLoading) {
-    return <p className='room-detail-loading'>Cargando detalles de la sala...</p>;
-  }
-
-  if (error) {
-    return <p className='room-detail-loading'>{error}</p>;
-  }
-
-  if (!roomDetails) {
-    return <p className='room-detail-loading'>Habitación no encontrada.</p>;
-  }
+  /** Renderizado condicional basado en estado de carga y errores */
+  if (isLoading) return <p className='room-detail-loading'>Cargando detalles de la sala...</p>;
+  if (error) return <p className='room-detail-loading'>{error}</p>;
+  if (!roomDetails) return <p className='room-detail-loading'>Habitación no encontrada.</p>;
 
   const { roomType, roomPrice, roomPhotoUrl, description, bookings } = roomDetails;
 
   return (
     <div className="room-details-booking">
+      {/* Mensaje de reserva exitosa */}
       {showMessage && (
         <p className="booking-success-message">
           ¡Reserva realizada! Código de confirmación: {confirmationCode}. Se le ha enviado un SMS y un correo electrónico con los detalles de su reserva.
         </p>
       )}
-      {errorMessage && (
-        <p className="error-message">
-          {errorMessage}
-        </p>
-      )}
+
+      {/* Mensaje de error local */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      {/* Información general de la habitación */}
       <h2>Detalles de la habitación</h2>
       <br />
       <img src={roomPhotoUrl} alt={roomType} className="room-details-image" />
@@ -153,6 +171,8 @@ const RoomDetailsPage = () => {
         <p>Precio: ${roomPrice} / noche</p>
         <p>{description}</p>
       </div>
+
+      {/* Reservas existentes */}
       {bookings && bookings.length > 0 && (
         <div>
           <h3>Detalles de la reserva existente</h3>
@@ -167,9 +187,13 @@ const RoomDetailsPage = () => {
           </ul>
         </div>
       )}
+
+      {/* Sección de reservas */}
       <div className="booking-info">
         <button className="book-now-button" onClick={() => setShowDatePicker(true)}>Reservar ahora</button>
         <button className="go-back-button" onClick={() => setShowDatePicker(false)}>Volver</button>
+
+        {/* Selector de fechas y número de invitados */}
         {showDatePicker && (
           <div className="date-picker-container">
             <DatePicker
@@ -181,7 +205,6 @@ const RoomDetailsPage = () => {
               endDate={checkOutDate}
               placeholderText="Fecha de entrada"
               dateFormat="dd/MM/yyyy"
-              // dateFormat="yyyy-MM-dd"
             />
             <DatePicker
               className="detail-search-field"
@@ -192,7 +215,6 @@ const RoomDetailsPage = () => {
               endDate={checkOutDate}
               minDate={checkInDate}
               placeholderText="Fecha de salida"
-              // dateFormat="yyyy-MM-dd"
               dateFormat="dd/MM/yyyy"
             />
 
@@ -219,6 +241,8 @@ const RoomDetailsPage = () => {
             </div>
           </div>
         )}
+
+        {/* Resumen de precio y botón final de confirmación */}
         {totalPrice > 0 && (
           <div className="total-price">
             <p>Precio total: ${totalPrice}</p>

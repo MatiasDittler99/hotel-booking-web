@@ -5,24 +5,42 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // ================================
+  // Ignorar carpetas globalmente
+  // ================================
+  globalIgnores(['dist']),  // No analizar la carpeta de build
+
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx}'],  // Archivos que serán analizados
+
+    // ================================
+    // Extends / Reglas base
+    // ================================
     extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
+      js.configs.recommended,             // Reglas recomendadas de JS moderno
+      reactHooks.configs.flat.recommended,// Reglas recomendadas para Hooks de React
+      reactRefresh.configs.vite,          // Integración con Vite + React Refresh
     ],
+
+    // ================================
+    // Opciones de lenguaje
+    // ================================
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: globals.browser,           // Reconocer globals del navegador
       parserOptions: {
         ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
+        ecmaFeatures: { jsx: true },      // JSX habilitado
+        sourceType: 'module',             // Import/export
       },
     },
+
+    // ================================
+    // Reglas personalizadas
+    // ================================
     rules: {
+      // Evita error por variables no usadas
+      // Ignora variables que comiencen con mayúscula o guión bajo
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },

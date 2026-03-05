@@ -1,24 +1,62 @@
-/*FIND BOOKING PAGE */
+/* ==========================================================================
+   FIND BOOKING PAGE STYLES
+   ----------------------------------------------------------------------------
+   Este archivo maneja el estilo de la página "Find Booking", incluyendo:
+   - Contenedor principal de la página.
+   - Título y encabezados.
+   - Sección de búsqueda y sus inputs.
+   - Botones y efectos de hover.
+   - Detalles de la reserva.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Contenedor principal de la página
+   ----------------------------------------------------------------------------
+   - Limita el ancho máximo al 50% de la pantalla.
+   - Centra el contenido horizontalmente.
+   - Aplica margen superior e inferior para separación con otros bloques.
+   - Padding interno para separación de bordes.
+   -------------------------------------------------------------------------- */
 .find-booking-page {
     max-width: 50%;
     margin: 10px auto 60px auto;
     padding: 20px;
 }
 
-/* agregado */
+/* --------------------------------------------------------------------------
+   Título principal de la página
+   ----------------------------------------------------------------------------
+   - Centra el texto.
+   - Aplica margen inferior para separar del formulario de búsqueda.
+   - Color principal definido en variable CSS (--primary).
+   -------------------------------------------------------------------------- */
 .find-booking-page h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--primary);
 }
 
+/* --------------------------------------------------------------------------
+   Contenedor del bloque de búsqueda
+   ----------------------------------------------------------------------------
+   - Uso de flexbox para alinear input y botón horizontalmente.
+   - Centrado horizontal y vertical.
+   -------------------------------------------------------------------------- */
 .search-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* hasta aca */
 
+/* --------------------------------------------------------------------------
+   Input de texto de búsqueda
+   ----------------------------------------------------------------------------
+   - Padding interno para comodidad de escritura.
+   - Tamaño de fuente legible.
+   - Borde definido y redondeado.
+   - Margen derecho para separar del botón.
+   - Ancho fijo para consistencia visual.
+   -------------------------------------------------------------------------- */
 .search-container input[type="text"] {
     padding: 10px;
     font-size: 16px;
@@ -28,6 +66,14 @@
     width: 300px;
 }
 
+/* --------------------------------------------------------------------------
+   Botón de búsqueda / acción
+   ----------------------------------------------------------------------------
+   - Padding amplio para clic fácil.
+   - Tamaño de fuente consistente con input.
+   - Color de fondo principal y texto contrastante.
+   - Borde redondeado y cursor pointer para indicar interactividad.
+   -------------------------------------------------------------------------- */
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -38,10 +84,22 @@ button {
     cursor: pointer;
 }
 
+/* --------------------------------------------------------------------------
+   Efecto hover en botones
+   ----------------------------------------------------------------------------
+   - Cambio de color para feedback visual de interacción.
+   -------------------------------------------------------------------------- */
 button:hover {
     background-color: var(--primary-dark);
 }
 
+/* --------------------------------------------------------------------------
+   Contenedor de detalles de la reserva
+   ----------------------------------------------------------------------------
+   - Margen superior para separar del bloque de búsqueda.
+   - Borde y radio para visualización de tarjeta.
+   - Padding interno para separar contenido del borde.
+   -------------------------------------------------------------------------- */
 .booking-details {
     margin-top: 20px;
     border: 1px solid var(--border);
@@ -49,6 +107,11 @@ button:hover {
     padding: 10px;
 }
 
+/* --------------------------------------------------------------------------
+   Párrafos generales
+   ----------------------------------------------------------------------------
+   - Margen vertical reducido para evitar separación excesiva entre líneas.
+   -------------------------------------------------------------------------- */
 p {
     margin: 5px 0;
 }

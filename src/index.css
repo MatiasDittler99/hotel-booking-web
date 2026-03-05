@@ -1,3 +1,35 @@
+/* ================================
+   Imports de CSS en un único archivo
+   ================================ */
+
+/**
+ * Observaciones:
+ * 1. Cada componente tiene su propio CSS modular:
+ *    - Mantiene estilos encapsulados y evita conflictos globales.
+ *    - Facilita mantenimiento y escalabilidad.
+ *
+ * 2. Se incluyen estilos globales y comunes:
+ *    - App.css: estilos base y variables de tema.
+ *    - Navbar.css, Footer.css, Responsive.css: reutilizables en varios lugares.
+ *
+ * 3. Orden lógico:
+ *    - Primero estilos globales y base.
+ *    - Luego estilos de componentes públicos (Home, Auth, Booking).
+ *    - Luego estilos de componentes Admin.
+ *    - Finalmente, estilos de Profile y responsive.
+ *
+ * 4. Ventajas:
+ *    - Claridad en la estructura de imports.
+ *    - Evita la sobreescritura accidental de estilos.
+ *    - Facilita identificar dónde modificar estilos de un componente.
+ *
+ * 5. Posibles mejoras:
+ *    - Usar preprocesadores (SCSS) o CSS Modules para encapsulación automática.
+ *    - Evaluar lazy-loading de CSS por página para optimizar performance.
+ *    - Considerar un archivo de index.css que importe todos los CSS de componentes,
+ *      para simplificar imports en App.js y mantener consistencia.
+ *    - Revisar que Responsive.css se cargue al final para que sus overrides tengan efecto.
+ */
 @import './App.css';
 @import './component/common/Navbar.css';
 @import './component/auth/LoginPage.css';

@@ -4,14 +4,13 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import RoomResult from "./RoomResult";
 import ApiService from "../../service/ApiService";
 
-// 🔹 Mock navigate
+// 🔹 Mock del hook useNavigate de react-router-dom
 const mockNavigate = vi.fn();
-
 vi.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
-// 🔹 Mock ApiService
+// 🔹 Mock del ApiService para simular roles de usuario
 vi.mock("../../service/ApiService", () => ({
   default: {
     isAdmin: vi.fn(),
@@ -30,14 +29,16 @@ describe("RoomResult", () => {
   ];
 
   beforeEach(() => {
+    // 🔹 Limpiamos mocks antes de cada test para evitar contaminación
     vi.clearAllMocks();
   });
 
   it("renderiza correctamente los datos de la habitación", () => {
-    ApiService.isAdmin.mockReturnValue(false);
+    ApiService.isAdmin.mockReturnValue(false); // Usuario normal
 
     render(<RoomResult roomSearchResults={mockRooms} />);
 
+    // 🔹 Validamos que la información de la habitación se muestre
     expect(screen.getByText("Single")).toBeInTheDocument();
     expect(screen.getByText("Precio: $100 / noche")).toBeInTheDocument();
     expect(screen.getByText("Descripción: Habitación simple")).toBeInTheDocument();
@@ -49,9 +50,7 @@ describe("RoomResult", () => {
 
     render(<RoomResult roomSearchResults={mockRooms} />);
 
-    expect(
-      screen.getByText("Ver/Reservar ahora")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Ver/Reservar ahora")).toBeInTheDocument();
   });
 
   it("muestra botón de edición si es admin", () => {
@@ -59,9 +58,7 @@ describe("RoomResult", () => {
 
     render(<RoomResult roomSearchResults={mockRooms} />);
 
-    expect(
-      screen.getByText("Sala de edición")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Sala de edición")).toBeInTheDocument();
   });
 
   it("navega correctamente al reservar", async () => {
@@ -71,6 +68,7 @@ describe("RoomResult", () => {
 
     await userEvent.click(screen.getByText("Ver/Reservar ahora"));
 
+    // 🔹 Confirmamos que la navegación se llamó con la URL correcta
     expect(mockNavigate).toHaveBeenCalledWith("/room-details-book/1");
   });
 

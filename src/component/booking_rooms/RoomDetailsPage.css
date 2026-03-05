@@ -1,4 +1,21 @@
-/*ROOM DETAILS PAGE*/
+/* ==========================================================================
+   ROOM DETAILS PAGE STYLES
+   ----------------------------------------------------------------------------
+   Este archivo maneja el estilo de la página "Room Details", incluyendo:
+   - Contenedor principal de la habitación.
+   - Imagen y descripción de la habitación.
+   - Información de reservas y lista de reservas existentes.
+   - Campos de entrada para confirmar reserva.
+   - Botones de acción y mensajes de éxito/error.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Contenedor principal de la página
+   ----------------------------------------------------------------------------
+   - Flex column para alinear verticalmente todos los elementos.
+   - Centrado horizontal.
+   - Márgenes y padding para separación del layout general.
+   -------------------------------------------------------------------------- */
 .room-details-booking {
     display: flex;
     flex-direction: column;
@@ -7,56 +24,93 @@
     padding: 20px;
 }
 
+/* --------------------------------------------------------------------------
+   Imagen de la habitación
+   ----------------------------------------------------------------------------
+   - Dimensiones fijas y autoajuste para mantener proporción.
+   - Object-fit cover para mantener recorte visual adecuado.
+   - Margen inferior para separar de la información.
+   -------------------------------------------------------------------------- */
 .room-details-image {
     width: 400px;
-    height: 200px;
+    height: auto; /* Ajuste actualizado para responsividad */
     object-fit: cover;
     margin-bottom: 10px;
 }
 
+/* --------------------------------------------------------------------------
+   Información de la habitación
+   ----------------------------------------------------------------------------
+   - Texto centrado.
+   - Márgenes para separar de otros bloques.
+   -------------------------------------------------------------------------- */
 .room-details-info {
     text-align: center;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.book-now-button {
+/* --------------------------------------------------------------------------
+   Botón "Book Now"
+   ----------------------------------------------------------------------------
+   - Color de fondo y texto principal.
+   - Bordes redondeados y cursor pointer.
+   - Hover con cambio de color para feedback visual.
+   -------------------------------------------------------------------------- */
+.book-now-button,
+.confirm-booking {
     background-color: var(--primary);
     color: var(--text);
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.book-now-button:hover {
+.book-now-button:hover,
+.confirm-booking:hover {
     background-color: var(--primary-dark);
 }
 
-
-.room-details-image {
-    width: 400px;
-    height: auto;
-}
-
-.room-details-info {
-    margin-top: 20px;
-}
-
+/* --------------------------------------------------------------------------
+   Contenedor de información de reserva
+   ----------------------------------------------------------------------------
+   - Separación de otros bloques mediante margen superior.
+   -------------------------------------------------------------------------- */
 .booking-info {
     margin-top: 20px;
 }
 
+/* --------------------------------------------------------------------------
+   Lista de reservas
+   ----------------------------------------------------------------------------
+   - Sin bullets.
+   - Padding cero para limpieza visual.
+   -------------------------------------------------------------------------- */
 .booking-list {
     list-style-type: none;
     padding: 0;
 }
 
+/* --------------------------------------------------------------------------
+   Elemento individual de reserva
+   ----------------------------------------------------------------------------
+   - Separación inferior y borde inferior para delimitar visualmente.
+   - Padding interno para claridad.
+   -------------------------------------------------------------------------- */
 .booking-item {
     margin-bottom: 10px;
     border-bottom: 1px solid var(--border);
     padding-bottom: 5px;
 }
 
+/* --------------------------------------------------------------------------
+   Texto dentro del listado de reservas
+   ----------------------------------------------------------------------------
+   - Booking number: negrita y color principal para resaltar.
+   - Booking text: cursiva y color más claro para jerarquía visual.
+   -------------------------------------------------------------------------- */
 .booking-number {
     font-weight: bold;
     color: var(--text);
@@ -67,8 +121,14 @@
     color: var(--text-light);
 }
 
+/* --------------------------------------------------------------------------
+   Campos de búsqueda o detalle
+   ----------------------------------------------------------------------------
+   - Padding interno y borde definido.
+   - Bordes redondeados y fondo para resaltar sobre la superficie.
+   - Sombra para profundidad.
+   -------------------------------------------------------------------------- */
 .detail-search-field {
-    /* flex: 0 0 calc(20.33% - 20px); */
     margin: 5px;
     padding: 12px;
     border: 1px solid var(--border);
@@ -77,15 +137,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-.confirm-booking {
-    background-color: var(--primary);
-    color: var(--text);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/* --------------------------------------------------------------------------
+   Contenedor de datos del huésped
+   ----------------------------------------------------------------------------
+   - Flex column, alineación al inicio para inputs y labels.
+   - Separación inferior del bloque siguiente.
+   -------------------------------------------------------------------------- */
 .guest-container {
     display: flex;
     flex-direction: column;
@@ -108,20 +165,13 @@
     border-radius: 4px;
 }
 
-.confirm-booking {
-    background-color: var(--primary);
-    color: var(--text);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.confirm-booking:hover {
-    background-color: var(--primary-dark);
-}
-
+/* --------------------------------------------------------------------------
+   Mensajes de estado
+   ----------------------------------------------------------------------------
+   - success-message: color principal, fuente pesada, tamaño grande.
+   - booking-success-message: color de acento, centrado y destacado.
+   - error-message: color fuerte de acento para alertas, centrado y destacado.
+   -------------------------------------------------------------------------- */
 .booking-success-message {
     text-align: center;
     color: var(--accent);
@@ -129,20 +179,16 @@
     font-size: 16px;
 }
 
-.error-message {
-    text-align: center;
-    color: (--accent-strong);
-    font-weight: 800;
-    font-size: 20px;
-
-}
-
 .success-message {
     text-align: center;
     color: var(--primary);
     font-weight: 800;
     font-size: 20px;
-
 }
 
-/*ROOM DETAILS PAGE END HERE*/
+.error-message {
+    text-align: center;
+    color: var(--accent-strong); /* Corregido sintaxis de variable */
+    font-weight: 800;
+    font-size: 20px;
+}

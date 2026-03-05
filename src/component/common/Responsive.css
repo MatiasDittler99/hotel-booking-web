@@ -1,5 +1,10 @@
-/* Responsive styles */
+/* ==================================================
+   RESPONSIVE STYLES
+   ================================================== */
+
+/* 🔹 Pantallas muy grandes: 1400px o más */
 @media (min-width: 1400px) {
+    /* Limita el ancho máximo de páginas principales para mejor lectura */
     .find-booking-page,
     .auth-container,
     .profile-page,
@@ -8,16 +13,16 @@
     }
 }
 
-
-
+/* 🔹 Pantallas grandes pero con ancho específico (1025px a 1088px) */
 @media (min-width: 1025px) and (max-width: 1088px) {
-
+    /* Ajusta ancho y márgenes de la página de búsqueda */
     .find-booking-page {
-        max-width: 650px;   /* en vez de 50% solo en este rango */
+        max-width: 650px;
         margin: 60px auto 80px auto;
         text-align: center;
     }
 
+    /* Contenedor de búsqueda vertical y centrado */
     .search-container {
         display: flex;
         flex-direction: column;
@@ -25,23 +30,27 @@
         margin-left: 0;
     }
 
+    /* Inputs de búsqueda responsivos */
     .search-container input[type="text"] {
         width: 100%;
         max-width: 420px;
         margin: 0 0 15px 0;
     }
 
+    /* Botón de búsqueda más estrecho */
     .search-container button {
         width: 200px;
     }
 }
 
+/* 🔹 Pantallas medianas y pequeñas: hasta 1024px */
 @media (max-width: 1024px) {
-
+    /* Navbar más compacta */
     .navbar {
         padding: 20px;
     }
 
+    /* Banner de cabecera más pequeño */
     .header-banner h1 {
         font-size: 35px;
     }
@@ -50,6 +59,7 @@
         font-size: 22px;
     }
 
+    /* Lista de habitaciones vertical en móviles */
     .room-list-item {
         flex-direction: column;
         height: auto;
@@ -60,45 +70,49 @@
         height: 200px;
     }
 
+    /* Ajuste de detalles de habitación */
     .room-details {
         margin-left: 0;
     }
 
+    /* Página de búsqueda ocupa más ancho */
     .find-booking-page {
         max-width: 80%;
     }
 
+    /* Contenedor de búsqueda centrado */
     .search-container {
         justify-content: center;
         margin-left: 0;
     }
 
+    /* Servicios responsivos */
     .service-card {
         flex: 1 1 100%;
     }
 }
 
+/* 🔹 Pantallas intermedias específicas: 769px a 830px */
 @media (min-width: 769px) and (max-width: 830px) {
-
     .navbar {
-        padding: 20px 20px;   /* menos padding lateral */
+        padding: 20px 20px;   /* reduce padding lateral */
     }
 
     .navbar-ul {
-        flex-wrap: nowrap;    /* evita que se baje */
-        gap: 12px;            /* reduce separación */
-        font-size: 16px;      /* baja un poco el tamaño */
+        flex-wrap: nowrap;     /* evita salto de items */
+        gap: 12px;             /* reduce separación */
+        font-size: 16px;       /* tamaño de fuente menor */
     }
 
     .navbar-ul li {
-        margin-left: 0;       /* evita sumar ancho extra */
-        white-space: nowrap;  /* evita cortes de texto */
+        margin-left: 0;        /* elimina margen extra */
+        white-space: nowrap;   /* evita que el texto se corte */
     }
 }
 
+/* 🔹 Pantallas móviles: 261px a 768px */
 @media (min-width: 261px) and (max-width: 768px) {
-
-    /* NAVBAR */
+    /* Navbar vertical y centrado */
     .navbar {
         flex-direction: column;
         align-items: center;
@@ -127,14 +141,14 @@
     }
 
     .navbar-ul li:last-child {
-        grid-column: span 2;
+        grid-column: span 2; /* último botón ocupa dos columnas */
     }
 
     .navbar-ul li:last-child a {
         text-align: center;
     }
 
-    /* HEADER */
+    /* Banner de cabecera móvil */
     .header-banner {
         height: 300px;
     }
@@ -149,7 +163,7 @@
         text-align: center;
     }
 
-    /* SEARCH HOME */
+    /* Contenedor de búsqueda móvil */
     .search-container {
         flex-direction: column;
         align-items: stretch;
@@ -167,7 +181,7 @@
         margin: 10px 0;
     }
 
-    /* ROOM LIST */
+    /* Lista de habitaciones en móvil */
     .room-list-item {
         flex-direction: column;
         height: auto;
@@ -182,7 +196,7 @@
         padding: 10px;
     }
 
-    /* FIND BOOKING */
+    /* Página de búsqueda ajustada */
     .find-booking-page {
         max-width: 95%;
         padding: 10px;
@@ -197,7 +211,7 @@
         width: 100%;
     }
 
-    /* SERVICES */
+    /* Servicios móviles */
     .service-section {
         flex-direction: column;
         margin: 10px;
@@ -207,17 +221,16 @@
         flex: 1 1 100%;
     }
 
-    /* FOOTER */
+    /* Footer móvil */
     .my-footer {
         width: 100%;
         text-align: center;
-        padding: 40px 0 10px 0; /* 🔥 esto lo baja */
+        padding: 40px 0 10px 0; /* ajusta espacio inferior */
     }
-
 }
 
+/* 🔹 Pantallas muy pequeñas: hasta 480px */
 @media (max-width: 480px) {
-
     .header-banner h1 {
         font-size: 18px;
     }
@@ -243,16 +256,18 @@
     }
 }
 
+/* 🔹 Footer en móviles: hasta 769px */
 @media (max-width: 769px) {
     .my-footer {
-        padding: 8px 0;   /* antes era 20px */
-        font-size: 14px;  /* un poco más chico */
+        padding: 8px 0;
+        font-size: 14px;
     }
 }
 
+/* 🔹 Footer en pantallas muy pequeñas: 261px a 380px */
 @media (min-width: 261px) and (max-width: 380px) {
     .my-footer {
-        padding: 4px 0;   /* todavía más chico */
+        padding: 4px 0;
         font-size: 12px;
     }
 }

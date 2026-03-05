@@ -1,4 +1,23 @@
-/* FOOTER STYLING */
+/* 
+ * Footer Styling
+ * -----------------------------------------------------------------------------
+ * Clase: .my-footer
+ *
+ * Propósito:
+ * - Estilizar el footer principal de la aplicación.
+ * - Mantenerlo siempre visible en la parte inferior de la ventana.
+ * - Asegurar legibilidad y consistencia visual con el tema de la app.
+ *
+ * Estilos aplicados:
+ * - color: define el color del texto usando variable de tema (--text).
+ * - background-color: fondo del footer usando variable de tema (--surface).
+ * - padding: espacio interno de 20px para separación del contenido.
+ * - text-align: centra el contenido horizontalmente.
+ * - position: fixed mantiene el footer siempre visible en la parte inferior.
+ * - bottom: 0 posiciona el footer pegado al borde inferior.
+ * - width: 100% asegura que el footer ocupe todo el ancho de la pantalla.
+ * - font-weight: 500 para un texto semi-negrita, más legible.
+ */
 .my-footer {
     color: var(--text);
     background-color: var(--surface);

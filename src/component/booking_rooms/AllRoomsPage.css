@@ -1,40 +1,95 @@
-/*ALL ROOMS PAGE STYLING START*/
+/* ==========================================================================
+   ALL ROOMS PAGE - STYLES
+   ==========================================================================
+   Estilos correspondientes a la vista de administración/listado de habitaciones.
+   Se prioriza:
+   - Claridad visual
+   - Separación jerárquica de elementos
+   - Consistencia con el sistema de diseño (variables CSS)
+   ========================================================================== */
 
+
+/**
+ * Contenedor principal de la página.
+ * - Margen superior e inferior amplio para separar del header y footer.
+ * - Se mantiene sin padding interno para permitir control específico
+ *   desde los elementos hijos.
+ */
 .all-rooms {
     margin: 50px 0px 90px 0px;
 }
 
+
+/**
+ * Título principal de la sección.
+ * - Centrado para reforzar jerarquía visual.
+ * - Color primario para mantener identidad visual.
+ */
 .all-rooms h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--primary);
 }
 
+
+/**
+ * Contenedor del bloque de filtrado.
+ * - Se desplaza hacia la derecha para alineación con el layout general.
+ */
 .all-room-filter-div {
     margin-left: 5rem;
 }
 
+
+/**
+ * Etiquetas del bloque de filtrado.
+ * - Color primario para reforzar coherencia visual.
+ */
 .all-room-filter-div label {
     color: var(--primary);
 }
 
+
+/**
+ * Contenedor interno del select y botón.
+ * - Ocupa todo el ancho disponible.
+ * - Margen izquierdo adicional para separación visual.
+ */
 .filter-select-div {
     width: 100%;
     margin: 0px 0px 0px 4rem;
 }
 
+
+/**
+ * Botón de añadir habitación.
+ * - Posicionado a la derecha mediante float.
+ * - Peso tipográfico reforzado para indicar acción primaria secundaria.
+ */
 .add-room-button {
     float: right;
     margin-right: 70px;
     font-weight: 600;
 }
 
+
+/**
+ * Refuerzo visual del label del filtro.
+ * - Mayor peso tipográfico.
+ * - Tamaño aumentado para destacar sección de filtrado.
+ */
 .all-room-filter-div label {
     font-weight: 800;
     font-size: 20px;
-
 }
 
+
+/**
+ * Select del filtro de habitaciones.
+ * - Padding para mejor usabilidad.
+ * - Borde y border-radius consistentes con el sistema UI.
+ * - Tamaño de fuente legible.
+ */
 .all-room-filter-div select {
     width: auto;
     padding: 10px;
@@ -44,7 +99,6 @@
 }
 
 
-
-
-
-/*ALL ROOMS PAGE STYLING ENDS*/
+/* ==========================================================================
+   END OF ALL ROOMS PAGE STYLES
+   ========================================================================== */

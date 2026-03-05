@@ -4,18 +4,18 @@ import { MemoryRouter } from 'react-router-dom'
 import EditProfilePage from './EditProfilePage'
 import ApiService from '../../service/ApiService'
 
-// Mock navigate
+// 🔹 Mock de navigate para poder testear redirecciones
 const mockNavigate = vi.fn()
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom')
   return {
     ...actual,
-    useNavigate: () => mockNavigate
+    useNavigate: () => mockNavigate // Devuelve nuestra función mock
   }
 })
 
-// Mock ApiService
+// 🔹 Mock del ApiService para no llamar al backend real
 vi.mock('../../service/ApiService', () => ({
   default: {
     getUserProfile: vi.fn(),
@@ -25,6 +25,7 @@ vi.mock('../../service/ApiService', () => ({
 
 describe('EditProfilePage', () => {
 
+  // 🔹 Limpia todos los mocks antes de cada test
   beforeEach(() => {
     vi.clearAllMocks()
   })
@@ -36,11 +37,9 @@ describe('EditProfilePage', () => {
     phoneNumber: '123456789'
   }
 
+  // 🔹 Test que verifica que los datos del usuario se renderizan correctamente
   test('renderiza datos del usuario', async () => {
-
-    ApiService.getUserProfile.mockResolvedValue({
-      user: mockUser
-    })
+    ApiService.getUserProfile.mockResolvedValue({ user: mockUser })
 
     render(
       <MemoryRouter>
@@ -48,20 +47,18 @@ describe('EditProfilePage', () => {
       </MemoryRouter>
     )
 
+    // Espera a que se carguen los datos asincrónicos
     await waitFor(() => {
-      expect(screen.getByText(/Nombre:/i))
-        .toBeInTheDocument()
+      expect(screen.getByText(/Nombre:/i)).toBeInTheDocument()
     })
 
-    expect(screen.getByText('Matias'))
-      .toBeInTheDocument()
-
-    expect(screen.getByText('matias@test.com'))
-      .toBeInTheDocument()
+    // Verifica que se muestran los valores correctos
+    expect(screen.getByText('Matias')).toBeInTheDocument()
+    expect(screen.getByText('matias@test.com')).toBeInTheDocument()
   })
 
+  // 🔹 Test que verifica el manejo de error si getUserProfile falla
   test('muestra error si falla getUserProfile', async () => {
-
     ApiService.getUserProfile.mockRejectedValue(
       new Error('Error al cargar perfil')
     )
@@ -73,19 +70,14 @@ describe('EditProfilePage', () => {
     )
 
     await waitFor(() => {
-      expect(screen.getByText(/Error al cargar perfil/i))
-        .toBeInTheDocument()
+      expect(screen.getByText(/Error al cargar perfil/i)).toBeInTheDocument()
     })
   })
 
+  // 🔹 Test que verifica que no se llama a deleteUser si el usuario cancela la confirmación
   test('no elimina si el usuario cancela confirm', async () => {
-
-    ApiService.getUserProfile.mockResolvedValue({
-      user: mockUser
-    })
-
-    // Mock confirm -> false
-    vi.spyOn(window, 'confirm').mockReturnValue(false)
+    ApiService.getUserProfile.mockResolvedValue({ user: mockUser })
+    vi.spyOn(window, 'confirm').mockReturnValue(false) // Cancelación
 
     render(
       <MemoryRouter>
@@ -93,24 +85,17 @@ describe('EditProfilePage', () => {
       </MemoryRouter>
     )
 
-    await waitFor(() =>
-      screen.getByText(/Eliminar perfil/i)
-    )
-
+    await waitFor(() => screen.getByText(/Eliminar perfil/i))
     fireEvent.click(screen.getByText(/Eliminar perfil/i))
 
     expect(ApiService.deleteUser).not.toHaveBeenCalled()
   })
 
+  // 🔹 Test que verifica la eliminación y redirección si el usuario confirma
   test('elimina perfil y navega a signup si confirma', async () => {
-
-    ApiService.getUserProfile.mockResolvedValue({
-      user: mockUser
-    })
-
+    ApiService.getUserProfile.mockResolvedValue({ user: mockUser })
     ApiService.deleteUser.mockResolvedValue({})
-
-    vi.spyOn(window, 'confirm').mockReturnValue(true)
+    vi.spyOn(window, 'confirm').mockReturnValue(true) // Confirmación
 
     render(
       <MemoryRouter>
@@ -118,10 +103,7 @@ describe('EditProfilePage', () => {
       </MemoryRouter>
     )
 
-    await waitFor(() =>
-      screen.getByText(/Eliminar perfil/i)
-    )
-
+    await waitFor(() => screen.getByText(/Eliminar perfil/i))
     fireEvent.click(screen.getByText(/Eliminar perfil/i))
 
     await waitFor(() => {
@@ -131,17 +113,11 @@ describe('EditProfilePage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/signup')
   })
 
+  // 🔹 Test que verifica manejo de error si deleteUser falla
   test('muestra error si deleteUser falla', async () => {
-
-    ApiService.getUserProfile.mockResolvedValue({
-      user: mockUser
-    })
-
-    ApiService.deleteUser.mockRejectedValue(
-      new Error('Error al eliminar')
-    )
-
-    vi.spyOn(window, 'confirm').mockReturnValue(true)
+    ApiService.getUserProfile.mockResolvedValue({ user: mockUser })
+    ApiService.deleteUser.mockRejectedValue(new Error('Error al eliminar'))
+    vi.spyOn(window, 'confirm').mockReturnValue(true) // Confirmación
 
     render(
       <MemoryRouter>
@@ -149,15 +125,11 @@ describe('EditProfilePage', () => {
       </MemoryRouter>
     )
 
-    await waitFor(() =>
-      screen.getByText(/Eliminar perfil/i)
-    )
-
+    await waitFor(() => screen.getByText(/Eliminar perfil/i))
     fireEvent.click(screen.getByText(/Eliminar perfil/i))
 
     await waitFor(() => {
-      expect(screen.getByText(/Error al eliminar/i))
-        .toBeInTheDocument()
+      expect(screen.getByText(/Error al eliminar/i)).toBeInTheDocument()
     })
   })
 

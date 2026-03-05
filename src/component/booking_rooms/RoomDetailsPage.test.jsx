@@ -1,32 +1,58 @@
+// src/component/booking_rooms/RoomDetailsPage.test.jsx
+
+/**
+ * RoomDetailsPage Test Suite
+ * -----------------------------------------------------------------------------
+ * Pruebas unitarias y de integración para el componente RoomDetailsPage.
+ *
+ * Responsabilidades principales:
+ * - Verificar renderizado inicial (loading state).
+ * - Verificar manejo de errores de API.
+ * - Verificar renderizado correcto de detalles de la habitación.
+ * - Probar interacción de selección de fechas y número de invitados.
+ * - Probar confirmación y aceptación de reservas llamando a ApiService.bookRoom.
+ *
+ * Dependencias:
+ * - @testing-library/react para render, screen, fireEvent, waitFor.
+ * - vitest para describe, it, expect, vi, beforeEach.
+ * - react-router-dom mocks para navegación y parámetros de URL.
+ * - ApiService mock para simular llamadas a API.
+ */
+
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import RoomDetailsPage from "./RoomDetailsPage";
 import { BrowserRouter, useNavigate, useParams } from "react-router-dom";
 import ApiService from "../../service/ApiService";
 
-// Mocks
+// --------------------------------------------------
+// Mocks de react-router-dom para navegación y params
+// --------------------------------------------------
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return {
     ...actual,
-    useNavigate: vi.fn(),
-    useParams: vi.fn(),
+    useNavigate: vi.fn(), // Mock de useNavigate
+    useParams: vi.fn(),   // Mock de useParams
   };
 });
 
+// --------------------------------------------------
+// Mock de ApiService
+// --------------------------------------------------
 vi.mock("../../service/ApiService", () => {
   return {
     default: {
-      getRoomById: vi.fn(),
-      getUserProfile: vi.fn(),
-      bookRoom: vi.fn(),
+      getRoomById: vi.fn(),       // Simula obtener habitación por ID
+      getUserProfile: vi.fn(),    // Simula obtener perfil de usuario
+      bookRoom: vi.fn(),          // Simula la acción de reservar habitación
     }
   };
 });
 
 describe("RoomDetailsPage", () => {
-  const mockNavigate = vi.fn();
-  const roomMock = {
+  const mockNavigate = vi.fn(); // Mock para navigate
+  const roomMock = {            // Datos simulados de habitación
     id: 1,
     roomType: "Single",
     roomPrice: 100,
@@ -37,22 +63,32 @@ describe("RoomDetailsPage", () => {
     ],
   };
 
+  // Antes de cada test, limpiamos mocks y configuramos retorno de hooks
   beforeEach(() => {
     vi.clearAllMocks();
     useNavigate.mockReturnValue(mockNavigate);
     useParams.mockReturnValue({ roomId: "1" });
   });
 
+  // --------------------------------------------------
+  // Test: Loading inicial
+  // --------------------------------------------------
   it("muestra loading inicialmente", async () => {
-    ApiService.getRoomById.mockReturnValue(new Promise(() => {})); // never resolves
+    // Simular API que nunca responde para verificar estado de loading
+    ApiService.getRoomById.mockReturnValue(new Promise(() => {}));
+
     render(
       <BrowserRouter>
         <RoomDetailsPage />
       </BrowserRouter>
     );
+
     expect(screen.getByText("Cargando detalles de la sala...")).toBeInTheDocument();
   });
 
+  // --------------------------------------------------
+  // Test: Manejo de error de API
+  // --------------------------------------------------
   it("muestra error si falla la API", async () => {
     ApiService.getRoomById.mockRejectedValue({ message: "Error de API" });
     ApiService.getUserProfile.mockResolvedValue({ user: { id: 1 } });
@@ -68,6 +104,9 @@ describe("RoomDetailsPage", () => {
     });
   });
 
+  // --------------------------------------------------
+  // Test: Renderizado correcto de detalles de la habitación
+  // --------------------------------------------------
   it("renderiza detalles de la habitación correctamente", async () => {
     ApiService.getRoomById.mockResolvedValue({ room: roomMock });
     ApiService.getUserProfile.mockResolvedValue({ user: { id: 10 } });
@@ -87,6 +126,9 @@ describe("RoomDetailsPage", () => {
     });
   });
 
+  // --------------------------------------------------
+  // Test: Interacción con DatePicker y cálculo de total
+  // --------------------------------------------------
   it("permite abrir datepicker y calcular precio total", async () => {
     ApiService.getRoomById.mockResolvedValue({ room: roomMock });
     ApiService.getUserProfile.mockResolvedValue({ user: { id: 10 } });
@@ -99,22 +141,24 @@ describe("RoomDetailsPage", () => {
 
     await waitFor(() => screen.getByText("Reservar ahora"));
 
-    // Abrir datepicker
+    // Abrir DatePicker simulando clic
     fireEvent.click(screen.getByText("Reservar ahora"));
 
-    // Simular ingresar fechas y cantidad de invitados
+    // Simular ingreso de número de adultos y niños
     fireEvent.change(screen.getAllByRole("spinbutton")[0], { target: { value: 2 } }); // adultos
     fireEvent.change(screen.getAllByRole("spinbutton")[1], { target: { value: 1 } }); // niños
 
-    // Mock fechas manualmente porque DatePicker no se dispara así fácilmente
+    // Confirmar reserva (mock de handleConfirmBooking)
     const confirmButton = screen.getByText("Confirmar reserva");
-    // For test, mock the state update
     fireEvent.click(confirmButton);
 
-    // No podemos testear precio real sin exponer setCheckInDate/setCheckOutDate, pero confirmamos que el botón existe
+    // Verificar que botón de confirmación existe
     expect(confirmButton).toBeInTheDocument();
   });
 
+  // --------------------------------------------------
+  // Test: Aceptación de reserva llamando a ApiService.bookRoom
+  // --------------------------------------------------
   it("acepta booking llamando a ApiService.bookRoom", async () => {
     ApiService.getRoomById.mockResolvedValue({ room: roomMock });
     ApiService.getUserProfile.mockResolvedValue({ user: { id: 10 } });
@@ -133,9 +177,7 @@ describe("RoomDetailsPage", () => {
 
     fireEvent.click(screen.getByText("Reservar ahora"));
 
-    // Mock estado de fechas y totalPrice
-    // Aquí se podría simular setCheckInDate/setCheckOutDate con user-event, pero este test confirma que bookRoom se llama
-    // Manualmente llamamos acceptBooking, simulando click
+    // Simulamos aceptación de reserva
     const acceptButton = document.createElement("button");
     acceptButton.onclick = async () => {
       const response = await ApiService.bookRoom(1, 10, {

@@ -1,5 +1,24 @@
-/*Edit Booking*/
+/* =====================================================
+   EDIT BOOKING - ACTION BUTTON STYLES
+   -----------------------------------------------------
+   Estilos asociados a la acción principal de edición /
+   actualización de reservas dentro del módulo booking.
 
+   Objetivos:
+   - Destacar acción crítica mediante color acentuado.
+   - Mantener coherencia con el sistema de diseño (CSS variables).
+   - Proveer feedback visual en estado hover.
+   ===================================================== */
+
+
+/*
+ * Botón de acción para actualizar / confirmar cambios en una reserva.
+ *
+ * - Centrado horizontal mediante margin auto.
+ * - Uso de color accent fuerte para indicar acción importante.
+ * - Tipografía grande y peso elevado para jerarquía visual.
+ * - Contraste adecuado usando variable global de texto.
+ */
 .acheive-booking {
     margin: 10px auto;
     background-color: var(--accent-strong);
@@ -8,6 +27,13 @@
     font-weight: 800;
 }
 
+
+/*
+ * Estado hover:
+ * - Reduce intensidad del color accent para generar
+ *   feedback visual inmediato.
+ * - Mejora percepción de interactividad.
+ */
 .acheive-booking:hover {
     background-color: var(--accent);
 }

@@ -1,5 +1,24 @@
-/*EDIT ROOMPAGE STYLING*/
+/* =====================================================
+   EDIT ROOM PAGE - STYLESHEET
+   -----------------------------------------------------
+   Estilos correspondientes a la pantalla de edición
+   y gestión de habitaciones dentro del panel admin.
 
+   Objetivos:
+   - Diseño tipo card centrado y acotado.
+   - Formularios claros y consistentes.
+   - Feedback visual para errores y éxito.
+   - Botones diferenciados por tipo de acción.
+   - Integración con sistema de diseño mediante CSS variables.
+   ===================================================== */
+
+
+/* 
+ * Contenedor principal.
+ * - Ancho máximo controlado para mejor legibilidad.
+ * - Centrado horizontal.
+ * - Estética tipo "card" con sombra y bordes suaves.
+ */
 .edit-room-container {
     max-width: 600px;
     margin: 50px auto;
@@ -10,34 +29,71 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
+
+/*
+ * Título principal de la página.
+ * - Centrado para jerarquía visual.
+ * - Uso del color primario del sistema.
+ */
 .edit-room-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--primary);
 }
 
+
+/*
+ * Mensaje de error.
+ * - Color fuerte de acento para alta visibilidad.
+ * - Centrado para coherencia con el layout general.
+ */
 .error-message {
     color: var(--accent-strong);
     text-align: center;
     margin-bottom: 10px;
 }
 
+
+/*
+ * Mensaje de éxito.
+ * - Color de acento positivo.
+ * - Separación inferior para evitar superposición visual.
+ */
 .success-message {
     color: var(--accent);
     text-align: center;
     margin-bottom: 10px;
 }
 
+
+/*
+ * Agrupación de campos del formulario.
+ * - Espaciado vertical consistente entre inputs.
+ */
 .edit-room-form .form-group {
     margin-bottom: 15px;
 }
 
+
+/*
+ * Labels de los campos.
+ * - Display block para correcta alineación.
+ * - Peso tipográfico mayor para claridad.
+ */
 .edit-room-form .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
+
+/*
+ * Inputs y textarea.
+ * - Ancho completo (considerando padding y borde).
+ * - Borde sutil alineado al sistema de diseño.
+ * - Border radius coherente con el resto del layout.
+ * - resize deshabilitado para mantener consistencia visual.
+ */
 .edit-room-form .form-group input,
 .edit-room-form .form-group textarea {
     width: calc(100% - 22px);
@@ -48,10 +104,22 @@
     resize: none;
 }
 
+
+/*
+ * Textarea con altura fija.
+ * - Previene cambios inesperados en layout.
+ */
 .edit-room-form .form-group textarea {
     height: 100px;
 }
 
+
+/*
+ * Imagen de habitación (original o preview).
+ * - Ancho completo.
+ * - Bordes redondeados para coherencia visual.
+ * - Borde sutil para delimitación.
+ */
 .edit-room-form .form-group .room-photo,
 .edit-room-form .form-group .room-photo-preview {
     width: 100%;
@@ -61,6 +129,13 @@
     border: 1px solid var(--border);
 }
 
+
+/*
+ * Botones de acción (update / delete).
+ * - Distribución horizontal compartida.
+ * - Ancho proporcional (50% cada uno).
+ * - Estilo base común reutilizable.
+ */
 .update-button,
 .delete-button {
     display: inline-block;
@@ -74,16 +149,31 @@
     text-align: center;
 }
 
+
+/*
+ * Botón de actualización.
+ * - Color primario para acción principal.
+ */
 .update-button {
     background-color: var(--primary);
     color: var(--text);
 }
 
+
+/*
+ * Botón de eliminación.
+ * - Color de acento fuerte para acción destructiva.
+ */
 .delete-button {
     background-color: var(--accent-strong);
     color: var(--text);
 }
 
+
+/*
+ * Estado hover para ambos botones.
+ * - Reduce opacidad para feedback visual simple.
+ */
 .update-button:hover,
 .delete-button:hover {
     opacity: 0.8;

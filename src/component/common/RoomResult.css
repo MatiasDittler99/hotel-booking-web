@@ -1,77 +1,77 @@
-/* ROOM SEARCH Component RESULT HOME PAGE STYLING */
+/* ==================================================
+   ROOM SEARCH / RESULT HOME PAGE STYLING
+   ================================================== */
+
+/* Contenedor general de resultados */
 .room-results {
-    display: block;
-    flex-wrap: wrap;
-    margin: 10px 30px;
+    display: block;       /* bloque principal que contiene todos los items */
+    flex-wrap: wrap;      /* permite que los items se ajusten si se cambia a flex */
+    margin: 10px 30px;    /* separación externa para espaciar de otros elementos */
 }
 
+/* Item individual de habitación */
 .room-list-item {
-    width: calc(95% - 20px);
-    height: 20vh;
-    margin: 5px auto;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    overflow: hidden;
-    display: flex;
+    width: calc(95% - 20px); /* ancho casi completo con margen */
+    height: 20vh;             /* altura relativa a la pantalla para consistencia */
+    margin: 5px auto;         /* centrado horizontal y margen vertical */
+    border: 1px solid var(--border); /* borde visible */
+    border-radius: 5px;       /* esquinas redondeadas */
+    overflow: hidden;         /* recorta contenido que se salga del contenedor */
+    display: flex;            /* permite que la imagen y detalles estén en línea */
 }
 
+/* Imagen de la habitación */
 .room-list-item-image {
-    width: 20%;
-    /* Adjust image width */
-    height: 20vh;
+    width: 20%;       /* ocupa 20% del ancho del item */
+    height: 20vh;     /* altura igual al contenedor */
+    object-fit: cover; /* asegura que la imagen cubra todo el espacio */
 }
 
+/* Detalles de la habitación (texto, título, descripción) */
 .room-details {
-    flex: 1;
-    /* Take remaining space */
-    padding: 15px;
-    margin-left: 10px;
+    flex: 1;           /* ocupa el espacio restante después de la imagen */
+    padding: 15px;     /* separación interna */
+    margin-left: 10px; /* separación lateral respecto a la imagen */
 }
 
+/* Título de la habitación */
 .room-details h3 {
-    color: var(--primary);
+    color: var(--primary); /* color principal del tema */
 }
 
+/* Estado de carga cuando los detalles no están listos */
 .room-detail-loading {
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 20px;
-    color: var(--text-light);
-
+    text-align: center;     /* centra el texto */
+    font-size: 20px;        /* tamaño de fuente visible */
+    font-weight: 600;       /* un poco más grueso */
+    margin-top: 20px;       /* separación del contenido superior */
+    color: var(--text-light); /* color secundario para indicar carga */
 }
 
+/* Contenedor del botón de reservar */
 .book-now-div {
-    align-self: center;
+    align-self: center;     /* centra verticalmente el botón dentro del item */
 }
 
+/* Botón de reservar */
 .book-now-button {
-    background-color: var(--primary);
-    color: var(--text);
-    border: none;
-    margin-right: 10px;
-    border-radius: 5px;
-    padding: 15px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-right: 10px;
+    background-color: var(--primary); /* color principal */
+    color: var(--text);               /* color de texto */
+    border: none;                     /* sin borde */
+    padding: 10px 20px;               /* tamaño cómodo */
+    border-radius: 5px;               /* esquinas redondeadas */
+    cursor: pointer;                  /* cambia cursor al pasar */
+    margin-right: 10px;               /* separación entre botones */
+    font-weight: 600;                 /* más grueso para visibilidad */
 }
 
-.book-now-button:hover {
-    background-color: var(--primary-dark);
+/* Hover efecto para botones (reserva o editar) */
+.book-now-button:hover,
+.edit-room-button:hover {
+    opacity: 0.8;                     /* ligeramente transparente al pasar */
 }
 
-/* ROOM SEARCH RESULT */
-.book-now-button {
-    background-color: var(--primary);
-    color: var(--text);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
+/* Botón de editar habitación */
 .edit-room-button {
     background-color: var(--primary);
     color: var(--text);
@@ -80,9 +80,4 @@
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
-}
-
-.book-now-button:hover,
-.edit-room-button:hover {
-    opacity: 0.8;
 }

@@ -1,79 +1,89 @@
-/**Profile page styling */
+/** Profile page styling **/
 
+/* Contenedor principal de la página de perfil */
 .profile-page {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: var(--surface);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    max-width: 800px;              /* Limita el ancho para mejorar legibilidad */
+    margin: 20px auto;             /* Centrado horizontal con margen superior */
+    padding: 20px;                 /* Espaciado interno consistente */
+    font-family: Arial, sans-serif; /* Fuente legible y neutra */
+    background-color: var(--surface); /* Color de fondo consistente con la UI */
+    border-radius: 8px;            /* Bordes redondeados para suavizar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra ligera para profundidad */
 }
 
+/* Título principal */
 .profile-page h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--primary);
+    text-align: center;            /* Centrado visual */
+    margin-bottom: 20px;           /* Separación del contenido siguiente */
+    color: var(--primary);         /* Color principal de la UI */
 }
 
+/* Subtítulos */
 .profile-page h3 {
-    color: var(--primary);
+    color: var(--primary);         /* Mantiene coherencia de color */
 }
 
+/* Contenedor de botones de acción (editar, eliminar, etc.) */
 .profile-actions {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 20px;
+    justify-content: center;       /* Centrado de botones horizontalmente */
+    margin-bottom: 20px;           /* Separación del contenido posterior */
+    gap: 20px;                     /* Espacio uniforme entre botones */
 }
 
+/* Estilos de botones */
 .profile-actions button {
     background-color: var(--primary);
     color: var(--text);
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 5px;            /* Bordes redondeados consistentes */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Efecto de hover suave */
 }
 
 .profile-actions button:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-dark); /* Feedback visual al pasar el mouse */
 }
 
+/* Contenedores de detalles de usuario y sección de reservas */
 .profile-details,
 .bookings-section {
-    margin-bottom: 20px;
+    margin-bottom: 20px;           /* Separación consistente entre secciones */
 }
 
 .profile-details h3,
 .bookings-section h3 {
-    margin-bottom: 10px;
+    margin-bottom: 10px;           /* Espacio entre subtítulo y contenido */
 }
 
+/* Lista de reservas */
 .booking-list {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: column;        /* Lista vertical de reservas */
+    gap: 15px;                     /* Espacio uniforme entre ítems */
 }
 
+/* Cada reserva individual */
 .booking-item {
     padding: 15px;
-    background-color: var(--surface);
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    background-color: var(--surface); /* Fondo uniforme */
+    border-radius: 8px;            /* Bordes suavizados */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); /* Sombra ligera para resaltar */
 }
 
 .booking-item p {
-    margin: 5px 0;
+    margin: 5px 0;                 /* Espaciado interno de texto */
 }
 
+/* Imagen de la habitación */
 .room-photo {
-    max-width: 100%;
-    border-radius: 8px;
+    max-width: 100%;               /* Se adapta al contenedor */
+    border-radius: 8px;            /* Consistencia con el resto de la UI */
 }
 
+/* Mensajes de error */
 .error-message {
-    color: var(--accent-strong);
-    text-align: center;
+    color: var(--accent-strong);   /* Color de alerta/errores */
+    text-align: center;            /* Centrado para visibilidad */
 }

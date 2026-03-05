@@ -1,43 +1,48 @@
-/*PAGINATION COMPONENT STYLIMNG STARTS HERE*/
+/* ===========================================================
+   PAGINATION COMPONENT STYLING
+   -----------------------------------------------------------
+   Estilos para el componente de paginación.
+   Incluye contenedor, lista de páginas, botones y estado activo.
+   =========================================================== */
 
-
+/* Contenedor de la paginación */
 .pagination-nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    /* Add padding for spacing */
+    display: flex; /* Usamos flex para centrar los elementos horizontalmente */
+    justify-content: center; /* Centrar la paginación en el contenedor */
+    padding: 10px; /* Espaciado alrededor */
 }
 
+/* Lista de páginas */
 .pagination-ul {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
+    list-style-type: none; /* Eliminamos viñetas */
+    display: flex; /* Mostrar elementos en línea horizontal */
+    padding: 0; /* Eliminamos padding por defecto */
 }
 
+/* Elemento de cada página */
 .pagination-li {
-    margin: 0 5px;
+    margin: 0 5px; /* Separación entre botones */
 }
 
+/* Botón de página */
 .pagination-button {
-    background-color: var(--surface);
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--surface); /* Fondo neutro */
+    color: var(--primary); /* Color de texto principal */
+    border: 1px solid var(--primary); /* Borde destacado */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 12px; /* Espaciado interno */
+    cursor: pointer; /* Cursor de puntero para interacción */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave al hover */
 }
 
+/* Hover del botón */
 .pagination-button:hover {
-    background-color: var(--primary-dark);
-    color: var(--text);
+    background-color: var(--primary-dark); /* Fondo más oscuro al pasar el mouse */
+    color: var(--text); /* Texto claro al hover */
 }
 
-/* Style for the current page button */
+/* Botón de página activa */
 .current-page {
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: var(--primary); /* Fondo principal */
+    color: var(--text); /* Texto legible sobre fondo principal */
 }
-
-
-/*PAGINATION STYLING ENDS HERE*/

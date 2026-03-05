@@ -1,82 +1,92 @@
-/* General Navbar Styling */ 
+/* =============================================================================
+ * Navbar Styling
+ * -----------------------------------------------------------------------------
+ * Este archivo contiene los estilos para la barra de navegación principal.
+ * Responsabilidades principales:
+ * - Definir layout y espaciado de los elementos de la navbar.
+ * - Estilizar enlaces, botones y estados hover/activo.
+ * - Mantener consistencia de colores y tipografía con el theme general.
+ * ========================================================================== */
 
+/* Contenedor principal de la navbar */
 .navbar { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 25px 70px 25px 75px; 
-    background-color: var(--surface); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
-    font-family: Arial, sans-serif; 
-    font-size: 20px; 
-} 
+    display: flex; /* Layout flexible horizontal */
+    justify-content: space-between; /* Separar brand y links */
+    align-items: center; /* Centrado vertical */
+    padding: 25px 70px 25px 75px; /* Espaciado interno */
+    background-color: var(--surface); /* Fondo consistente con theme */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+    font-family: Arial, sans-serif; /* Tipografía general */
+    font-size: 20px; /* Tamaño de texto base */
+}
 
+/* Branding / Logo */
 .navbar-brand a { 
-    font-size: 24px; 
-    font-weight: bold; 
-    color: var(--primary); 
-    text-decoration: none; 
-} 
+    font-size: 24px; /* Más grande para destacar */
+    font-weight: bold; /* Resaltar la marca */
+    color: var(--primary); /* Color principal del theme */
+    text-decoration: none; /* Sin subrayado */
+}
 
+/* Lista de enlaces de navegación */
 .navbar-ul { 
-    list-style: none; 
-    display: flex; 
-    align-items: center; 
+    list-style: none; /* Eliminar viñetas */
+    display: flex; /* Alinear horizontalmente */
+    align-items: center; /* Centrado vertical */
     margin: 0; 
     padding: 0; 
-    flex-wrap: wrap; 
-} 
+    flex-wrap: wrap; /* Permitir que los links bajen si la pantalla es pequeña */
+}
 
+/* Items individuales de la lista */
 .navbar-ul li { 
-    margin-left: 20px; 
-} 
+    margin-left: 20px; /* Separación entre links */
+}
 
+/* Enlaces dentro de los items */
 .navbar-ul li a { 
-    text-decoration: none; 
-    color: var(--text-light); 
-    transition: color 0.5s; 
-} 
+    text-decoration: none; /* Sin subrayado */
+    color: var(--text-light); /* Color de texto principal */
+    transition: color 0.5s; /* Transición suave al hover */
+}
 
+/* Hover de los enlaces */
 .navbar-ul li a:hover { 
-    color: var(--accent); 
-} 
+    color: var(--accent); /* Color de acento al pasar el mouse */
+}
 
+/* Enlace activo */
 .navbar-ul li a.active { 
-    color: var(--accent); 
-} 
+    color: var(--accent); /* Resaltar el link activo */
+}
 
-/**NAV BAR STYLING START HERE*/ 
-/* NAVBAR STYLING */
-
+/* Botón de enlace destacado */
 .link-button { 
-    background-color: var(--primary); 
-    color: var(--text); 
-    padding: 10px; 
-    border-radius: 5px; 
-    text-decoration: none; 
-} 
+    background-color: var(--primary); /* Fondo principal */
+    color: var(--text); /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+}
 
-/**NAV BAR STYLING END HERE*/
-
-/* 🔥 Recuadros visibles siempre */
-
+/* 🔥 Recuadros visibles siempre - estilo permanente para links */
 .navbar-ul li a {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 10px;
-    background-color: var(--surface); /* fondo permanente */
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
+    display: inline-block; /* Permite padding y background */
+    padding: 8px 16px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: var(--surface); /* Fondo permanente */
+    border: 1px solid var(--border); /* Borde suave */
+    transition: all 0.3s ease; /* Transición suave para hover y cambios */
 }
 
-/* Hover */ 
+/* Hover mejorado */
 .navbar-ul li a:hover {
-    background-color: var(--accent);
-    color: var(--text);
+    background-color: var(--accent); /* Fondo de acento */
+    color: var(--text); /* Texto legible sobre fondo oscuro */
 }
 
-/* Activo */
+/* Enlace activo destacado */
 .navbar-ul li a.active {
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: var(--primary); /* Fondo principal para activo */
+    color: var(--text); /* Texto legible */
 }

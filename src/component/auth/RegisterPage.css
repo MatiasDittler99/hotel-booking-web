@@ -1,13 +1,31 @@
-/**REGISTRATION PAGE START HERE STYLING*/
+/* ==========================================================================
+   REGISTRATION PAGE - STYLES
+   ==========================================================================
+   Estilos específicos para la página de registro de usuario.
+   Se mantiene coherencia con el sistema de diseño global
+   mediante el uso de variables CSS (var(--primary), var(--border), etc).
+   ========================================================================== */
 
 
-
+/**
+ * Labels de los campos del formulario.
+ * - display: block asegura alineación vertical correcta.
+ * - font-weight: bold mejora jerarquía visual.
+ * - margin-bottom genera separación respecto al input asociado.
+ */
 .form-group label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+
+/**
+ * Inputs del formulario.
+ * - width controlado para evitar ocupar el 100% y mantener margen visual.
+ * - padding mejora usabilidad y área clickeable.
+ * - border y border-radius mantienen consistencia con el sistema UI.
+ */
 .form-group input {
     width: 90%;
     padding: 10px;
@@ -15,22 +33,38 @@
     border-radius: 5px;
 }
 
+
+/**
+ * Botón principal de envío del formulario.
+ * - Ancho ligeramente menor al 100% para alineación visual.
+ * - Uso de color primario del sistema.
+ * - Cursor pointer para indicar interactividad.
+ * - Transición suave para mejorar experiencia en hover.
+ * - Font-weight elevado para reforzar importancia de acción primaria.
+ */
 button[type="submit"] {
     width: 95%;
     padding: 12px;
     background-color: var(--primary);
     color: var(--text);
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 800;
-    border-radius: 10px;
 }
 
+
+/**
+ * Estado hover del botón.
+ * - Cambio a variante más oscura del color primario.
+ * - Refuerza feedback visual al usuario.
+ */
 button[type="submit"]:hover {
     background-color: var(--primary-dark);
 }
 
 
-/**REGISTRATION PAGE END HERE*/
+/* ==========================================================================
+   END OF REGISTRATION PAGE STYLES
+   ========================================================================== */
