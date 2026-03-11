@@ -95,7 +95,13 @@ function Navbar() {
                 )}
 
                 {/* Botón de cerrar sesión para usuarios autenticados */}
-                {isAuthenticated && <li onClick={handleLogout}>Cerrar Sesión</li>}
+                {isAuthenticated && (
+                    <li>
+                        <button className="navbar-link-button" onClick={handleLogout}>
+                            Cerrar Sesión
+                        </button>
+                    </li>
+                )}
             </ul>
         </nav>
     );

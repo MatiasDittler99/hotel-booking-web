@@ -90,3 +90,32 @@
     background-color: var(--primary); /* Fondo principal para activo */
     color: var(--text); /* Texto legible */
 }
+
+/* Botón de cerrar sesión en la navbar
+ * -------------------------------------------------------------------------
+ * Se utiliza para que el botón "Cerrar Sesión" tenga la misma apariencia
+ * visual que los enlaces de navegación.
+ * Al ser un <button> en lugar de un <a>, necesita estilos propios para
+ * mantener consistencia con el resto de los elementos del navbar.
+ */
+.navbar-link-button {
+    display: inline-block; /* Permite aplicar padding y comportarse como los links */
+    padding: 8px 16px; /* Espaciado interno igual que los enlaces */
+    border-radius: 10px; /* Bordes redondeados consistentes */
+    background-color: var(--surface); /* Fondo base del theme */
+    border: 1px solid var(--border); /* Borde suave para efecto de recuadro */
+    color: var(--text-light); /* Color de texto principal */
+    cursor: pointer; /* Cursor de interacción al pasar el mouse */
+    font-size: 20px; /* Mantener tamaño consistente con los enlaces */
+    transition: all 0.3s ease; /* Transición suave para cambios visuales */
+}
+
+/* Estado hover del botón de cerrar sesión
+ * -------------------------------------------------------------------------
+ * Aplica el mismo comportamiento visual que los enlaces del navbar
+ * cuando el usuario pasa el mouse sobre el botón.
+ */
+.navbar-link-button:hover {
+    background-color: var(--accent); /* Fondo de acento al interactuar */
+    color: var(--text); /* Texto legible sobre el fondo resaltado */
+}

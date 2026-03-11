@@ -86,7 +86,6 @@ function LoginPage() {
             if (response.statusCode === 200) {
                 localStorage.setItem('token', response.token);
                 localStorage.setItem('role', response.role);
-
                 navigate(from, { replace: true });
             }
 

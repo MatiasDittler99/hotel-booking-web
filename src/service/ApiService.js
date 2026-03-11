@@ -10,11 +10,12 @@ import axios from "axios"
  * - Usa axios para las llamadas HTTP.
  * - Las funciones son estáticas, por lo que no es necesario instanciar la clase.
  */
+
 export default class ApiService {
 
     // Base URL de la API, configurable mediante variable de entorno
+    // static BASE_URL = "https://hotel-booking-api-aoih.onrender.com";
     static BASE_URL = import.meta.env.VITE_API_URL;
-
     /**
      * getHeader
      * Retorna los headers estándar de autorización para las solicitudes autenticadas.
@@ -122,6 +123,7 @@ export default class ApiService {
         const result = await axios.post(`${this.BASE_URL}/rooms/add`, formData, {
             headers: {
                 ...this.getHeader(),
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'multipart/form-data'
             }
         });
@@ -283,3 +285,4 @@ export default class ApiService {
         return role === 'USER'
     }
 }
+

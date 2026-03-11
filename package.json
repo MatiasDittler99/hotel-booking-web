@@ -1,68 +1,38 @@
 {
-  "_comment": "Proyecto frontend de Hotel Booking con React 19, Vite 7 y testing con Vitest",
   "name": "hotel-booking-web",
   "private": true,
-  "_comment_private": "private:true evita publicar este paquete en npm",
   "version": "0.0.0",
   "type": "module",
-  "_comment_type": "Usa módulos ES6, permite import/export en Node y Vite",
-
   "scripts": {
-    "_comment_scripts": "Comandos principales para desarrollo, build, lint y testing",
     "dev": "vite",
-    "_comment_dev": "Levanta el servidor de desarrollo Vite con hot reload",
     "build": "vite build",
-    "_comment_build": "Genera el build de producción optimizado en /dist",
     "lint": "eslint .",
-    "_comment_lint": "Ejecuta ESLint sobre todo el proyecto",
     "preview": "vite preview",
-    "_comment_preview": "Preview del build de producción en localhost",
     "test": "vitest",
-    "_comment_test": "Ejecuta tests unitarios con Vitest en consola",
-    "test:ui": "vitest --ui",
-    "_comment_test_ui": "Ejecuta Vitest con interfaz gráfica interactiva"
+    "test:ui": "vitest --ui"
   },
-
   "dependencies": {
-    "_comment_dependencies": "Dependencias necesarias en producción",
     "axios": "^1.13.5",
-    "_comment_axios": "Cliente HTTP para consumir la API del backend",
+    "jwt-decode": "^4.0.0",
     "react": "^19.2.0",
-    "_comment_react": "Librería principal de UI",
-    "react-dom": "^19.2.0",
-    "_comment_react_dom": "Renderiza React en el DOM del navegador",
-    "react-router-dom": "^7.13.1",
-    "_comment_react_router": "Ruteo declarativo en React",
     "react-datepicker": "^9.1.0",
-    "_comment_datepicker": "Selector de fechas para reservas"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1"
   },
-
   "devDependencies": {
-    "_comment_devDependencies": "Dependencias para desarrollo y testing",
-    "@vitejs/plugin-react": "^5.1.1",
-    "_comment_vite_plugin": "Plugin para soporte React en Vite",
-    "vite": "^7.3.1",
-    "_comment_vite": "Build tool y dev server para React",
-    "eslint": "^9.39.1",
-    "_comment_eslint": "Analizador estático de código",
     "@eslint/js": "^9.39.1",
-    "_comment_eslint_js": "Configuración recomendada de reglas JS",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "_comment_react_hooks": "Validación de Hooks de React",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "_comment_react_refresh": "Soporte de Hot Reload React + Vite",
-    "globals": "^16.5.0",
-    "_comment_globals": "Define variables globales del navegador",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "_comment_types": "Tipos TypeScript para React (si usas TS en futuro)",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1",
-    "_comment_testing_library": "Librerías para testing de componentes React",
-    "vitest": "^4.0.18",
-    "_comment_vitest": "Framework de testing rápido y moderno",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
     "jsdom": "^28.1.0",
-    "_comment_jsdom": "Simula el DOM en Node para pruebas unitarias"
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
   }
 }

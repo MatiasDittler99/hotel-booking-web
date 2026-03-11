@@ -27,11 +27,7 @@ vi.mock("react-router-dom", () => ({
 /**
  * 🔹 Mock de ApiService
  * --------------------
- * Simula la lógica de autenticación y roles.
- * - isAuthenticated: true/false según test
- * - isAdmin: true/false según test
- * - isUser: true/false según test
- * - logout: función mock para verificar llamadas
+ * Simula la lógica de autenticación y roles del usuario.
  */
 vi.mock("../../service/ApiService", () => ({
   default: {
@@ -42,12 +38,33 @@ vi.mock("../../service/ApiService", () => ({
   },
 }));
 
+/**
+ * 🔹 Test Suite: Navbar
+ * --------------------
+ * Agrupa todas las pruebas relacionadas con el componente Navbar.
+ * Verifica:
+ * - renderizado de links públicos
+ * - comportamiento según roles
+ * - lógica de logout
+ */
 describe("Navbar", () => {
-  // Limpiar mocks antes de cada test
+
+  /**
+   * beforeEach
+   * ----------
+   * Limpia todos los mocks antes de cada test para evitar
+   * interferencias entre pruebas.
+   */
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
+  /**
+   * Test: Links públicos
+   * -------------------
+   * Verifica que los enlaces públicos siempre se rendericen,
+   * independientemente del estado de autenticación.
+   */
   it("renderiza los links públicos siempre", () => {
     ApiService.isAuthenticated.mockReturnValue(false);
     ApiService.isAdmin.mockReturnValue(false);
@@ -60,6 +77,12 @@ describe("Navbar", () => {
     expect(screen.getByText("Buscar Reserva")).toBeInTheDocument();
   });
 
+  /**
+   * Test: Usuario no autenticado
+   * ----------------------------
+   * Verifica que los botones de login y registro
+   * aparezcan cuando el usuario no está logueado.
+   */
   it("muestra login y register si no está autenticado", () => {
     ApiService.isAuthenticated.mockReturnValue(false);
     ApiService.isAdmin.mockReturnValue(false);
@@ -71,6 +94,12 @@ describe("Navbar", () => {
     expect(screen.getByText("Registrarse")).toBeInTheDocument();
   });
 
+  /**
+   * Test: Usuario normal
+   * --------------------
+   * Verifica que el link de perfil aparezca
+   * cuando el usuario tiene rol USER.
+   */
   it("muestra perfil si es usuario", () => {
     ApiService.isAuthenticated.mockReturnValue(true);
     ApiService.isAdmin.mockReturnValue(false);
@@ -81,6 +110,12 @@ describe("Navbar", () => {
     expect(screen.getByText("Perfil")).toBeInTheDocument();
   });
 
+  /**
+   * Test: Administrador
+   * -------------------
+   * Verifica que el link de administración aparezca
+   * cuando el usuario tiene rol ADMIN.
+   */
   it("muestra administración si es admin", () => {
     ApiService.isAuthenticated.mockReturnValue(true);
     ApiService.isAdmin.mockReturnValue(true);
@@ -91,6 +126,12 @@ describe("Navbar", () => {
     expect(screen.getByText("Administración")).toBeInTheDocument();
   });
 
+  /**
+   * Test: Botón de cerrar sesión visible
+   * ------------------------------------
+   * Verifica que el botón de cerrar sesión
+   * aparezca cuando el usuario está autenticado.
+   */
   it("muestra cerrar sesión si está autenticado", () => {
     ApiService.isAuthenticated.mockReturnValue(true);
     ApiService.isAdmin.mockReturnValue(false);
@@ -98,41 +139,55 @@ describe("Navbar", () => {
 
     render(<Navbar />);
 
-    expect(screen.getByText("Cerrar Sesión")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Cerrar Sesión" })
+    ).toBeInTheDocument();
   });
 
+  /**
+   * Test: Logout confirmado
+   * -----------------------
+   * Verifica que:
+   * - se ejecute ApiService.logout()
+   * - se navegue a /home
+   * cuando el usuario confirma el cierre de sesión.
+   */
   it("ejecuta logout y navega si confirma", async () => {
-    // Configurar usuario autenticado
     ApiService.isAuthenticated.mockReturnValue(true);
     ApiService.isAdmin.mockReturnValue(false);
     ApiService.isUser.mockReturnValue(false);
 
-    // Mock de confirmación
     vi.spyOn(window, "confirm").mockReturnValue(true);
 
     render(<Navbar />);
 
-    // Simular click en "Cerrar Sesión"
-    await userEvent.click(screen.getByText("Cerrar Sesión"));
+    await userEvent.click(
+      screen.getByRole("button", { name: "Cerrar Sesión" })
+    );
 
-    // Verificar que se llame a logout y navigate
     expect(ApiService.logout).toHaveBeenCalled();
     expect(mockNavigate).toHaveBeenCalledWith("/home");
   });
 
+  /**
+   * Test: Logout cancelado
+   * ----------------------
+   * Verifica que no se ejecute logout ni navegación
+   * cuando el usuario cancela la confirmación.
+   */
   it("no hace logout si cancela confirm", async () => {
     ApiService.isAuthenticated.mockReturnValue(true);
     ApiService.isAdmin.mockReturnValue(false);
     ApiService.isUser.mockReturnValue(false);
 
-    // Mock de confirmación cancelada
     vi.spyOn(window, "confirm").mockReturnValue(false);
 
     render(<Navbar />);
 
-    await userEvent.click(screen.getByText("Cerrar Sesión"));
+    await userEvent.click(
+      screen.getByRole("button", { name: "Cerrar Sesión" })
+    );
 
-    // Verificar que no se llame logout ni navigate
     expect(ApiService.logout).not.toHaveBeenCalled();
     expect(mockNavigate).not.toHaveBeenCalled();
   });
