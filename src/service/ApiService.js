@@ -236,7 +236,12 @@ export default class ApiService {
      * @param {string} bookingCode
      */
     static async getBookingByConfirmationCode(bookingCode) {
-        const result = await axios.get(`${this.BASE_URL}/bookings/get-by-confirmation-code/${bookingCode}`)
+        const result = await axios.get(
+            `${this.BASE_URL}/bookings/get-by-confirmation-code/${bookingCode}`,
+            {
+                headers: this.getHeader()
+            }
+        )
         return result.data
     }
 

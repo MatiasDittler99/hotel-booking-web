@@ -75,3 +75,25 @@
     width: 100%;                     /* Input responsivo dentro del contenedor */
     box-sizing: border-box;          /* Incluye padding y border en el ancho total */
 }
+
+/* Ajustes para el contenedor y el select */
+.search-field select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Si quieres que se vea más pequeño el texto y las opciones */
+.search-field select option {
+    font-size: 14px;
+    padding: 8px;
+}
+
+/* Limitar la altura visual si el navegador lo permite */
+.search-field select:focus {
+    outline: none;
+    border-color: #007bff; /* Color de énfasis */
+}

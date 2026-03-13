@@ -21,10 +21,11 @@
 .my-footer {
     color: var(--text);
     background-color: var(--surface);
-    padding: 20px;
+    padding: 6px 0;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 13px;
 }

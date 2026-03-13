@@ -115,7 +115,7 @@ const RoomSearch = ({ handleSearchResult }) => {
         {/* Campo de selección de tipo de habitación */}
         <div className="search-field">
           <label>Tipo de habitación</label>
-          <select value={roomType} onChange={(e) => setRoomType(e.target.value)}>
+          <select value={roomType} onChange={(e) => {setRoomType(e.target.value); e.target.size = 1}} onFocus={(e) => (e.target.size = 4)} onBlur={(e) => (e.target.size = 1)}>
             <option disabled value="">
               Seleccione el tipo de habitación
             </option>

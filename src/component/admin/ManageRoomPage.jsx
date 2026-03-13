@@ -200,6 +200,14 @@ const ManageRoomPage = () => {
             id="roomTypeSelect"
             value={selectedRoomType}
             onChange={handleRoomTypeChange}
+            onFocus={(e) => (e.target.size = 4)}
+            onBlur={(e) => (e.target.size = 1)}  
+            style={{
+              position: 'relative', 
+              zIndex: 10,
+              display: 'block',
+              marginTop: '10px'
+            }}
           >
             <option value="">Todo</option>
 

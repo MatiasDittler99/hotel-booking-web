@@ -44,6 +44,7 @@
 @import './component/booking_rooms/FindBookingPage.css';
 @import './component/admin/AdminPage.css';
 @import './component/admin/EditRoomPage.css';
+@import './component/admin/ManageBookingsPage.css';
 @import './component/common/BookingResult.css';
 @import './component/admin/EditBookingPage.css';
 @import './component/profile/ProfilePage.css';

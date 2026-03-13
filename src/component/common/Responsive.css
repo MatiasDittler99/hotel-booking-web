@@ -13,16 +13,14 @@
     }
 }
 
-/* 🔹 Pantallas grandes pero con ancho específico (1025px a 1088px) */
 @media (min-width: 1025px) and (max-width: 1088px) {
-    /* Ajusta ancho y márgenes de la página de búsqueda */
+
     .find-booking-page {
         max-width: 650px;
         margin: 60px auto 80px auto;
         text-align: center;
     }
 
-    /* Contenedor de búsqueda vertical y centrado */
     .search-container {
         display: flex;
         flex-direction: column;
@@ -30,16 +28,57 @@
         margin-left: 0;
     }
 
-    /* Inputs de búsqueda responsivos */
-    .search-container input[type="text"] {
-        width: 100%;
-        max-width: 420px;
-        margin: 0 0 15px 0;
+    /* mismo tamaño para todos los campos */
+    .search-field {
+        width: 330px;
+        margin-bottom: 15px;
     }
 
-    /* Botón de búsqueda más estrecho */
+    .search-field input,
+    .search-field select {
+        width: 100%;
+    }
+
+    /* FIX react-datepicker */
+    .react-datepicker-wrapper {
+        width: 100%;
+        display: block;
+    }
+
+    .react-datepicker__input-container {
+        width: 100%;
+    }
+
+    .react-datepicker__input-container input {
+        width: 100%;
+    }
+
     .search-container button {
         width: 200px;
+    }
+}
+
+/* 🔹 Ajuste navbar: 1025px a 1046px */
+@media (min-width: 1025px) and (max-width: 1046px) {
+
+    .navbar {
+        padding: 20px 15px;
+    }
+
+    .navbar-ul {
+        flex-wrap: nowrap;   /* evita que los items bajen */
+        gap: 10px;           /* menos separación */
+        font-size: 15px;     /* texto más compacto */
+    }
+
+    .navbar-ul li {
+        margin-left: 0;
+        white-space: nowrap;
+    }
+
+    .navbar-link-button {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }
 
@@ -107,6 +146,30 @@
     .navbar-ul li {
         margin-left: 0;        /* elimina margen extra */
         white-space: nowrap;   /* evita que el texto se corte */
+    }
+}
+
+/* 🔹 Pantallas intermedias: 831px a 943px */
+@media (min-width: 831px) and (max-width: 943px) {
+
+    .navbar {
+        padding: 20px 15px;
+    }
+
+    .navbar-ul {
+        flex-wrap: nowrap;      /* evita que el botón baje */
+        gap: 10px;              /* menos separación */
+        font-size: 15px;        /* texto un poco más chico */
+    }
+
+    .navbar-ul li {
+        margin-left: 0;
+        white-space: nowrap;    /* evita salto de texto */
+    }
+
+    .navbar-link-button {
+        padding: 6px 12px;      /* botón más compacto */
+        font-size: 14px;
     }
 }
 

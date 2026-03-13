@@ -25,18 +25,21 @@ import { ProtectedRoute, AdminRoute } from './service/Guard';
  * - Incluye Navbar y Footer globales
  */
 function App() {
+  // Inicializamos estado desde localStorage
+  const [loggedIn] = React.useState(() => !!localStorage.getItem("token"));
+  const [role] = React.useState(() => localStorage.getItem("role"));
   return (
     <BrowserRouter>
       <div className="App">
         {/* Navbar siempre visible */}
-        <Navbar />
-
+        <Navbar loggedIn={loggedIn} role={role} />
         <div className="content">
           <Routes>
 
             {/* =========================
                 Public Routes
                 ========================= */}
+            <Route exact path="/" element={<HomePage />} />
             <Route exact path="/home" element={<HomePage />} />
             <Route exact path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
@@ -47,35 +50,35 @@ function App() {
                 Protected Routes (usuarios autenticados)
                 ========================= */}
             <Route path="/room-details-book/:roomId"
-              element={<ProtectedRoute element={<RoomDetailsBookingPage />} />}
+              element={<ProtectedRoute element={<RoomDetailsBookingPage />} loggedIn={loggedIn} />}
             />
             <Route path="/profile"
-              element={<ProtectedRoute element={<ProfilePage />} />}
+              element={<ProtectedRoute element={<ProfilePage />} loggedIn={loggedIn} />}
             />
             <Route path="/edit-profile"
-              element={<ProtectedRoute element={<EditProfilePage />} />}
+              element={<ProtectedRoute element={<EditProfilePage />} loggedIn={loggedIn} />}
             />
 
             {/* =========================
                 Admin Routes (requiere rol ADMIN)
                 ========================= */}
             <Route path="/admin"
-              element={<AdminRoute element={<AdminPage />} />}
+              element={<AdminRoute element={<AdminPage />} loggedIn={loggedIn} role={role} />}
             />
             <Route path="/admin/manage-rooms"
-              element={<AdminRoute element={<ManageRoomPage />} />}
+              element={<AdminRoute element={<ManageRoomPage />} loggedIn={loggedIn} role={role} />}
             />
             <Route path="/admin/edit-room/:roomId"
-              element={<AdminRoute element={<EditRoomPage />} />}
+              element={<AdminRoute element={<EditRoomPage />} loggedIn={loggedIn} role={role} />}
             />
             <Route path="/admin/add-room"
-              element={<AdminRoute element={<AddRoomPage />} />}
+              element={<AdminRoute element={<AddRoomPage />} loggedIn={loggedIn} role={role} />}
             />
             <Route path="/admin/manage-bookings"
-              element={<AdminRoute element={<ManageBookingsPage />} />}
+              element={<AdminRoute element={<ManageBookingsPage />} loggedIn={loggedIn} role={role} />}
             />
             <Route path="/admin/edit-booking/:bookingCode"
-              element={<AdminRoute element={<EditBookingPage />} />}
+              element={<AdminRoute element={<EditBookingPage />} loggedIn={loggedIn} role={role} />}
             />
 
             {/* =========================

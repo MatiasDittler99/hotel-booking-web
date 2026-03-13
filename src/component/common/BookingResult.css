@@ -21,7 +21,7 @@
 
 /* Cada tarjeta individual de resultado de reserva */
 .booking-result-item {
-    background: var(--surface); /* Fondo de la tarjeta */
+    background: var(--border); /* Fondo de la tarjeta */
     padding: 15px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados para suavizar apariencia */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra sutil para dar profundidad */

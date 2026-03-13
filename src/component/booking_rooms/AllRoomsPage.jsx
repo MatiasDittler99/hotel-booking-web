@@ -98,6 +98,8 @@ const AllRoomsPage = () => {
   const handleRoomTypeChange = (e) => {
     setSelectedRoomType(e.target.value);
     filterRooms(e.target.value);
+    e.target.size = 1;
+    e.target.blur();
   };
 
   /**
@@ -150,6 +152,14 @@ const AllRoomsPage = () => {
         <select 
           value={selectedRoomType}
           onChange={handleRoomTypeChange}
+          onFocus={(e) => (e.target.size = 4)}
+          onBlur={(e) => (e.target.size = 1)}  
+          style={{
+            position: 'relative', 
+            zIndex: 10,
+            display: 'block',
+            marginTop: '10px'
+          }}
         >
           <option value="">Todo</option>
 
