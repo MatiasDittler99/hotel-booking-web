@@ -13,72 +13,93 @@
     }
 }
 
+/* =========================================================
+   Responsive: Ajustes para pantallas entre 1025px y 1088px
+   Corrige layout del buscador de habitaciones
+   ========================================================= */
 @media (min-width: 1025px) and (max-width: 1088px) {
 
+    /* Contenedor principal de la página de búsqueda */
     .find-booking-page {
-        max-width: 650px;
-        margin: 60px auto 80px auto;
-        text-align: center;
+        max-width: 650px;                 /* limita el ancho del contenido */
+        margin: 60px auto 80px auto;      /* centra el bloque vertical y horizontalmente */
+        text-align: center;               /* centra títulos y elementos internos */
     }
 
+    /* Contenedor del formulario de búsqueda */
     .search-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 0;
+        display: flex;                    /* layout flexible */
+        flex-direction: column;           /* campos apilados verticalmente */
+        align-items: center;              /* centra los campos */
+        margin-left: 0;                   /* elimina desplazamientos laterales */
     }
 
-    /* mismo tamaño para todos los campos */
+    /* Cada campo del buscador (fecha entrada, salida, tipo) */
     .search-field {
-        width: 330px;
-        margin-bottom: 15px;
+        width: 330px;                     /* ancho fijo para mantener consistencia visual */
+        margin-bottom: 15px;              /* separación entre campos */
     }
 
+    /* Inputs y select ocupan todo el ancho del contenedor */
     .search-field input,
     .search-field select {
         width: 100%;
     }
 
-    /* FIX react-datepicker */
+    /* -----------------------------------------------------
+       FIX para react-datepicker
+       El componente agrega wrappers internos que impiden
+       que el input se estire correctamente
+       ----------------------------------------------------- */
+
     .react-datepicker-wrapper {
-        width: 100%;
-        display: block;
+        width: 100%;                      /* el wrapper ocupa todo el ancho */
+        display: block;                   /* evita comportamiento inline */
     }
 
     .react-datepicker__input-container {
-        width: 100%;
+        width: 100%;                      /* contenedor interno al 100% */
     }
 
     .react-datepicker__input-container input {
-        width: 100%;
+        width: 100%;                      /* input del datepicker ocupa todo el ancho */
     }
 
+    /* Botón de búsqueda */
     .search-container button {
-        width: 200px;
+        width: 200px;                     /* ancho consistente para el botón */
     }
 }
 
-/* 🔹 Ajuste navbar: 1025px a 1046px */
+
+/* =========================================================
+   Responsive: Ajuste de navbar entre 1025px y 1046px
+   Evita que los elementos del menú salten de línea
+   ========================================================= */
 @media (min-width: 1025px) and (max-width: 1046px) {
 
+    /* Reduce padding lateral de la navbar */
     .navbar {
         padding: 20px 15px;
     }
 
+    /* Ajuste del menú de navegación */
     .navbar-ul {
-        flex-wrap: nowrap;   /* evita que los items bajen */
-        gap: 10px;           /* menos separación */
-        font-size: 15px;     /* texto más compacto */
+        flex-wrap: nowrap;   /* evita que los items pasen a otra línea */
+        gap: 10px;           /* reduce separación entre links */
+        font-size: 15px;     /* texto ligeramente más compacto */
     }
 
+    /* Ajuste individual de cada item del menú */
     .navbar-ul li {
-        margin-left: 0;
-        white-space: nowrap;
+        margin-left: 0;      /* elimina margen lateral */
+        white-space: nowrap; /* evita que el texto se corte */
     }
 
+    /* Botones tipo link dentro de la navbar */
     .navbar-link-button {
-        padding: 6px 12px;
-        font-size: 14px;
+        padding: 6px 12px;   /* reduce tamaño del botón */
+        font-size: 14px;     /* texto más pequeño para que entre mejor */
     }
 }
 
