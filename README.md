@@ -166,6 +166,59 @@ Estos modelos de datos son obtenidos desde la API REST del proyecto
 
 ---
 
+## 🧩 Componentes principales
+
+El frontend está organizado en componentes que representan diferentes funcionalidades del sistema.
+
+### Auth
+
+Componentes relacionados con la autenticación de usuarios.
+
+- **LoginPage** → Permite a los usuarios iniciar sesión en el sistema.
+- **RegisterPage** → Permite registrar nuevos usuarios.
+
+---
+
+### Home
+
+Componentes de la página principal.
+
+- **HomePage** → Muestra la información principal del sistema y acceso a las habitaciones disponibles.
+
+---
+
+### Booking Rooms
+
+Componentes relacionados con la visualización y reserva de habitaciones.
+
+- **AllRoomsPage** → Lista todas las habitaciones disponibles.
+- **RoomDetailsPage** → Muestra los detalles de una habitación y permite realizar reservas.
+- **FindBookingPage** → Permite buscar reservas mediante código de confirmación.
+
+---
+
+### Admin
+
+Componentes para administración del sistema.
+
+- **AdminPage** → Panel principal de administración.
+- **ManageRoomPage** → Gestión de habitaciones.
+- **EditRoomPage** → Edición de habitaciones existentes.
+- **AddRoomPage** → Creación de nuevas habitaciones.
+- **ManageBookingsPage** → Gestión de reservas.
+- **EditBookingPage** → Edición de reservas.
+
+---
+
+### Profile
+
+Componentes relacionados con el perfil del usuario.
+
+- **ProfilePage** → Visualización de información del usuario.
+- **EditProfilePage** → Edición de información del perfil.
+
+---
+
 # 🔐 Autenticación
 
 El frontend utiliza **JWT (JSON Web Token)** para autenticarse con la API del sistema.
